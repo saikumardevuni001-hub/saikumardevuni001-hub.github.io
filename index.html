@@ -79,6 +79,17 @@
     .cert h3 { margin: 0; font-size: 1rem; }
     .cert p { color: var(--muted); margin: 3px 0 0; font-size: .88rem; }
     .project-note { border: 1px dashed rgba(94,234,212,.35); background: rgba(94,234,212,.045); border-radius: 14px; padding: 18px; color: var(--muted); }
+    .certificate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .certificate-card { overflow: hidden; padding: 0; }
+    .certificate-card a.preview { display: block; background: #fff; }
+    .certificate-card img { display: block; width: 100%; height: 190px; object-fit: contain; background: #f4f4f4; }
+    .certificate-info { padding: 16px 18px 18px; }
+    .certificate-info h3 { margin: 0 0 5px; font-size: 1rem; }
+    .certificate-info p { color: var(--muted); margin: 0 0 12px; font-size: .86rem; }
+    .certificate-actions { display: flex; gap: 12px; flex-wrap: wrap; font-size: .88rem; font-weight: 700; }
+    .certificate-actions a { color: var(--cyan); }
+    .doc-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .doc-list a { color: var(--cyan); }
     .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .contact a { color: var(--cyan); overflow-wrap: anywhere; }
     footer { border-top: 1px solid var(--line); color: var(--muted); padding: 25px 0 35px; font-size: .88rem; }
@@ -93,7 +104,7 @@
     }
     @media (max-width: 540px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .grid-3, .certs { grid-template-columns: 1fr; }
+      .grid-3, .certs, .certificate-grid { grid-template-columns: 1fr; }
       .role { grid-template-columns: 1fr; gap: 4px; }
       section { padding: 52px 0; }
       .hero { padding-top: 58px; }
@@ -107,7 +118,7 @@
       <button class="menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
       <nav class="links" id="navLinks" aria-label="Main navigation">
         <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-        <a href="#education">Education</a><a href="#contact">Contact</a>
+        <a href="#education">Education</a><a href="#certificates">Certificates</a><a href="#projects">Projects</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -119,17 +130,14 @@
         <h1>Hi, I'm Sai Kumar.<br><span class="gradient">Securing the digital world.</span></h1>
         <p class="lead">Cybersecurity professional with experience across security assessment and IT infrastructure operations. Focused on growing into Cloud Security Engineering and building secure, resilient environments.</p>
         <div class="actions">
-          <a class="btn primary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" download>Download Resume ↓</a>
+          <a class="btn" href="#contact">Get in touch ↗</a>
           <a class="btn" href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn profile ↗</a>
         </div>
       </div>
       <aside class="profile-card">
-<a href="assets/sai-kumar-devuni.jpg" target="_blank" rel="noopener">
-  <img class="avatar"
-       src="assets/sai-kumar-devuni.jpg"
-       alt="Portrait of Sai Kumar Devuni"
-       style="cursor: zoom-in;">
-</a>        <h3>Sai Kumar Devuni</h3>
+        <img class="avatar" src="assets/sai-kumar-devuni.jpg" alt="Portrait of Sai Kumar Devuni">
+        <h3>Sai Kumar Devuni</h3>
         <p>Cloud Security & Cybersecurity</p>
         <div class="profile-meta">
           <div class="meta-row">⌖ <span><b>Based in</b> Hyderabad, Telangana, India</span></div>
@@ -215,9 +223,27 @@
       </div>
     </section>
 
+    <section id="certificates">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Credentials & recognition</div><h2>Certificates & achievements</h2><p class="sub">Selected credentials and awards. Select any certificate image to view it in full size. Verification links are provided only where an official credential URL is available.</p></div>
+        <div class="certificate-grid">
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/ec-council-certified-ethical-hacker.jpg" target="_blank" rel="noopener"><img src="assets/certificates/ec-council-certified-ethical-hacker.jpg" alt="EC-Council Certified Ethical Hacker certificate"></a><div class="certificate-info"><h3>Certified Ethical Hacker (CEH)</h3><p>EC-Council · Passed March 2026</p><div class="certificate-actions"><a href="assets/certificates/ec-council-certified-ethical-hacker.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/google-cybersecurity-professional-certificate.jpg" target="_blank" rel="noopener"><img src="assets/certificates/google-cybersecurity-professional-certificate.jpg" alt="Google Cybersecurity Professional Certificate"></a><div class="certificate-info"><h3>Google Cybersecurity Professional Certificate</h3><p>Google · Coursera · Completed April 2025</p><div class="certificate-actions"><a href="assets/certificates/google-cybersecurity-professional-certificate.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/bia-master-diploma-ethical-hacking.jpg" target="_blank" rel="noopener"><img src="assets/certificates/bia-master-diploma-ethical-hacking.jpg" alt="Boston Institute of Analytics Master Diploma in Ethical Hacking"></a><div class="certificate-info"><h3>Master Diploma – Ethical Hacking</h3><p>Boston Institute of Analytics · October 2025</p><div class="certificate-actions"><a href="assets/certificates/bia-master-diploma-ethical-hacking.jpg" target="_blank" rel="noopener">View diploma ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/bia-master-diploma-cyber-security.jpg" target="_blank" rel="noopener"><img src="assets/certificates/bia-master-diploma-cyber-security.jpg" alt="Boston Institute of Analytics Master Diploma in Cyber Security"></a><div class="certificate-info"><h3>Master Diploma – Cyber Security</h3><p>Boston Institute of Analytics · October 2025</p><div class="certificate-actions"><a href="assets/certificates/bia-master-diploma-cyber-security.jpg" target="_blank" rel="noopener">View diploma ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/ec-council-presidents-award.jpg" target="_blank" rel="noopener"><img src="assets/certificates/ec-council-presidents-award.jpg" alt="EC-Council University President's Award certificate"></a><div class="certificate-info"><h3>The President’s Award</h3><p>EC-Council University · December 2024</p><div class="certificate-actions"><a href="assets/certificates/ec-council-presidents-award.jpg" target="_blank" rel="noopener">View award ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/cisco-introduction-to-cybersecurity.jpg" target="_blank" rel="noopener"><img src="assets/certificates/cisco-introduction-to-cybersecurity.jpg" alt="Cisco Networking Academy Introduction to Cybersecurity certificate"></a><div class="certificate-info"><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy · September 2025</p><div class="certificate-actions"><a href="assets/certificates/cisco-introduction-to-cybersecurity.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/eccu-501-course-record.jpg" target="_blank" rel="noopener"><img src="assets/certificates/eccu-501-course-record.jpg" alt="EC-Council University ECCU 501 course degree audit"></a><div class="certificate-info"><h3>ECCU 501 – Ethical Hacking and Countermeasures</h3><p>EC-Council University · Course completion record</p><div class="certificate-actions"><a href="assets/certificates/eccu-501-course-record.jpg" target="_blank" rel="noopener">View course record ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/infotact-certificate-internship.jpg" target="_blank" rel="noopener"><img src="assets/certificates/infotact-certificate-internship.jpg" alt="Infotact Solutions cybersecurity internship certificate"></a><div class="certificate-info"><h3>Cybersecurity Internship Certificate</h3><p>Infotact Solutions · March–June 2025</p><div class="certificate-actions"><a href="assets/certificates/infotact-certificate-internship.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
+          <article class="card certificate-card"><a class="preview" href="assets/certificates/infotact-certificate-training.jpg" target="_blank" rel="noopener"><img src="assets/certificates/infotact-certificate-training.jpg" alt="Infotact Solutions cybersecurity training certificate"></a><div class="certificate-info"><h3>Cybersecurity Training Certificate</h3><p>Infotact Solutions · March–June 2025</p><div class="certificate-actions"><a href="assets/certificates/infotact-certificate-training.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
+        </div>
+        <div class="card" style="margin-top:18px"><h3 style="margin:0 0 6px">Additional professional document</h3><p class="small">Spinnaker Analytics experience letter (two pages).</p><div class="doc-list"><a href="assets/certificates/spinnaker-experience-letter-page-1.jpg" target="_blank" rel="noopener">View page 1 ↗</a><a href="assets/certificates/spinnaker-experience-letter-page-2.jpg" target="_blank" rel="noopener">View page 2 ↗</a></div></div>
+      </div>
+    </section>
+
     <section id="projects">
       <div class="wrap">
-        <div class="section-head"><div class="kicker">Practical work</div><h2>Projects & case studies</h2><p class="sub">Use this section to publish verified project details, screenshots, GitHub repositories, and technical write-ups.</p></div>
+        <div class="section-head"><div class="kicker">Selected technical work</div><h2>Projects & case studies</h2><p class="sub">A selection of cybersecurity, network security and cloud security projects demonstrating my technical interests and applied learning.</p></div>
         <div class="grid-3">
           <article class="card item"><div class="icon">01</div><h3>Secure Firmware Update Mechanism</h3><p>Configured secure boot, code signing and encrypted device communication to block unauthenticated IoT execution.</p></article>
           <article class="card item"><div class="icon">02</div><h3>Mobile Banking Security</h3><p>Explored AES encryption, API rate-limiting and input validation to reduce injection and data-leakage risks.</p></article>
@@ -229,6 +255,16 @@
           <article class="card item"><div class="icon">08</div><h3>Cloud Security in Enterprises Research</h3><p>Analysed breach case studies and developed a risk-management framework aligned with NIST CSF.</p><span class="small">EC-Council University</span></article>
         </div>
         <p class="small" style="margin-top:16px">Project summaries are based on the project descriptions in the supplied resume. Confirm that each description accurately reflects your individual contribution before publishing.</p>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Recruiter resources</div><h2>Resume</h2><p class="sub">Download my resume in PDF format for a detailed overview of my professional experience, technical skills, education and certifications.</p></div>
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+          <div><h3 style="margin:0 0 6px">Sai Kumar Devuni — Resume</h3><p class="small">PDF document · Updated November 2026</p></div>
+          <div class="actions" style="margin:0"><a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" download>Download PDF ↓</a><a class="btn" href="assets/Sai-Kumar-Devuni-Resume.pdf" target="_blank" rel="noopener">View Resume ↗</a></div>
+        </div>
       </div>
     </section>
 
