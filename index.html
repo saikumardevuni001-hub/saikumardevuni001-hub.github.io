@@ -58,13 +58,27 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .module-carousel { position: relative; }
-    .module-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 42%); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 5px 3px 18px; scrollbar-width: thin; scrollbar-color: rgba(94,234,212,.5) transparent; }
-    .module-track > article { scroll-snap-align: start; min-width: 0; }
-    .module-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; margin: 0 0 14px; }
+    .module-carousel { max-width: 900px; margin: 0 auto; }
+    .module-track { display:flex; gap:0; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:5px 3px 18px; scrollbar-width:none; }
+    .module-track::-webkit-scrollbar { display:none; }
+    .module-track > article { flex:0 0 100%; width:100%; scroll-snap-align:start; min-width:0; padding:clamp(22px,4vw,36px); }
+    .module-track > article h3 { font-size:clamp(1.25rem,2.4vw,1.7rem); margin:10px 0 18px; }
+    .module-track .lesson-list { line-height:1.8; }
+    .module-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:0 0 14px; }
     .module-control-buttons { display:flex; gap:8px; }
-    .module-control-buttons button { border:1px solid var(--line); color:var(--text); background:var(--panel); border-radius:10px; padding:9px 13px; cursor:pointer; font-weight:700; }
-    .module-control-buttons button:hover { border-color:var(--cyan); color:var(--cyan); }
-    .module-hint { color:var(--muted); font-size:.85rem; }
+    .module-control-buttons button { border:1px solid var(--line); color:var(--text); background:var(--panel); border-radius:10px; padding:10px 15px; cursor:pointer; font-weight:700; }
+    .module-control-buttons button:hover:not(:disabled) { border-color:var(--cyan); color:var(--cyan); transform:translateY(-2px); }
+    .module-control-buttons button:disabled { opacity:.35; cursor:not-allowed; }
+    .module-hint { color:var(--muted); font-size:.9rem; }
+    .module-progress { height:5px; background:var(--line); border-radius:20px; overflow:hidden; margin:0 3px 18px; }
+    .module-progress span { display:block; height:100%; width:6.25%; background:linear-gradient(90deg,var(--cyan),#8b5cf6); border-radius:20px; transition:width .35s ease; }
+    .module-picker { display:flex; gap:7px; overflow-x:auto; padding:4px 2px 14px; scrollbar-width:thin; }
+    .module-picker button { flex:0 0 auto; border:1px solid var(--line); background:var(--panel); color:var(--muted); border-radius:9px; padding:7px 10px; cursor:pointer; font-size:.82rem; }
+    .module-picker button[aria-current="step"] { color:var(--cyan); border-color:var(--cyan); background:rgba(94,234,212,.09); }
+    .module-deep-dive { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:22px; }
+    .module-detail { padding:16px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.025); }
+    .module-detail h4 { margin:0 0 8px; color:var(--cyan); font-size:.96rem; }
+    .module-detail p { margin:0; color:var(--muted); line-height:1.7; font-size:.94rem; }
     .contact-social { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
     .social-link { display:inline-flex; align-items:center; gap:9px; border:1px solid var(--line); background:rgba(255,255,255,.035); padding:11px 15px; border-radius:12px; font-weight:700; }
     .social-link:hover { transform:translateY(-3px); border-color:rgba(94,234,212,.45); }
@@ -152,8 +166,8 @@
     @media (max-width: 540px) {
       .wrap { width: min(100% - 28px, var(--max)); }
       .grid-3, .certs, .certificate-grid, .learning-grid, .safety-grid { grid-template-columns: 1fr; }
-      .module-track { grid-auto-columns: 88%; }
       .module-controls { align-items:flex-start; flex-direction:column; }
+      .module-deep-dive { grid-template-columns:1fr; }
       .role { grid-template-columns: 1fr; gap: 4px; }
       section { padding: 52px 0; }
       .hero { padding-top: 58px; }
@@ -339,8 +353,10 @@
         </div>
         <div class="section-head" style="margin-top:28px"><div class="kicker">Read the full syllabus</div><h2>Free Cybersecurity & Cloud Security Course</h2><p class="sub">Use this self-study syllabus in order. Each topic is a lesson checklist; study the concepts, practise only in authorised labs, and keep notes of what you learn. The guide is free to read. External platforms may have optional paid certificates or features.</p></div>
         <div class="module-carousel" aria-label="Course modules carousel">
-          <div class="module-controls"><span class="module-hint">Browse all 16 modules · scroll sideways or use the arrows</span><div class="module-control-buttons"><button type="button" class="module-prev" aria-label="Previous course modules">← Previous</button><button type="button" class="module-next" aria-label="Next course modules">Next →</button></div></div>
-          <div class="module-track" id="moduleTrack" tabindex="0">
+          <div class="module-controls"><span class="module-hint" id="moduleCounter" aria-live="polite">Module 1 of 16</span><div class="module-control-buttons"><button type="button" class="module-prev" aria-label="Previous module">← Previous</button><button type="button" class="module-next" aria-label="Next module">Next →</button></div></div>
+          <div class="module-progress" aria-hidden="true"><span id="moduleProgress"></span></div>
+          <nav class="module-picker" id="modulePicker" aria-label="Choose a course module"></nav>
+          <div class="module-track" id="moduleTrack" tabindex="0" aria-label="Course module slides">
           <article class="card item"><div class="icon">01</div><h3>Module 1 — Cybersecurity fundamentals</h3><ul class="lesson-list"><li>What cybersecurity is; security goals: confidentiality, integrity and availability.</li><li>Assets, threats, vulnerabilities, likelihood, impact and risk.</li><li>Security controls: preventive, detective, corrective; defence in depth.</li><li>Security policies, acceptable use, data classification and privacy.</li><li>Threat actors, attack surfaces, common attack paths and basic threat modelling.</li></ul></article>
           <article class="card item"><div class="icon">02</div><h3>Module 2 — Networking foundations</h3><ul class="lesson-list"><li>OSI and TCP/IP models; Ethernet, MAC and IP addressing.</li><li>IPv4, subnetting concepts, private/public IPs, gateways and routing.</li><li>TCP vs UDP, ports, DNS, DHCP, ARP, ICMP, HTTP and HTTPS.</li><li>Switches, routers, VLANs, NAT, firewalls, proxies and VPNs.</li><li>TLS certificates, secure Wi-Fi, network segmentation and zero trust basics.</li></ul></article>
           <article class="card item"><div class="icon">03</div><h3>Module 3 — Operating systems & endpoint security</h3><ul class="lesson-list"><li>Windows and Linux fundamentals, users, groups, permissions and services.</li><li>Patch management, secure configuration, host firewalls and endpoint protection.</li><li>Windows Event Logs, Sysmon basics, Linux logs and audit trails.</li><li>Disk encryption, backups, removable media and device hardening.</li><li>Virtual machines, snapshots and safe lab design.</li></ul></article>
@@ -462,10 +478,57 @@
     const moduleTrack = document.getElementById('moduleTrack');
     const prevModules = document.querySelector('.module-prev');
     const nextModules = document.querySelector('.module-next');
+    const modulePicker = document.getElementById('modulePicker');
+    const moduleCounter = document.getElementById('moduleCounter');
+    const moduleProgress = document.getElementById('moduleProgress');
     if (moduleTrack && prevModules && nextModules) {
-      const slideDistance = () => Math.max(280, Math.round(moduleTrack.clientWidth * 0.82));
-      prevModules.addEventListener('click', () => moduleTrack.scrollBy({left: -slideDistance(), behavior: 'smooth'}));
-      nextModules.addEventListener('click', () => moduleTrack.scrollBy({left: slideDistance(), behavior: 'smooth'}));
+      const slides = [...moduleTrack.querySelectorAll(':scope > article')];
+      const moduleDetails = [
+        ['Understand the security mindset','Learn why cybersecurity protects information, systems and services. Connect confidentiality, integrity and availability to real examples such as private records, accurate lab results and reliable business systems.','Classify five everyday assets, list one threat and vulnerability for each, then suggest a preventive and detective control.','CIA triad · asset · threat · vulnerability · risk · defence in depth'],
+        ['Understand how data travels','Follow a connection from a device through switches, routers, DNS and transport protocols. Learn how addressing, ports and network boundaries affect security.','Draw a small office network with a router, switch, firewall and two VLANs. Label the traffic path for a web request.','OSI · TCP/IP · IPv4 · subnet · DNS · DHCP · VLAN · NAT · VPN'],
+        ['Secure computers and endpoints','Understand operating-system users, permissions, services, updates, host firewalls, endpoint protection and audit logs. Compare common Windows and Linux security practices.','Review security settings on your own computer or a permitted virtual machine. Record update status, firewall status and one useful log location.','Hardening · patching · permissions · Event Viewer · Sysmon · auditd · backup'],
+        ['Control who can access what','Learn the difference between proving identity and granting permissions. Understand least privilege, role-based access, MFA, directory services and single sign-on.','Create a simple role-to-permission matrix for three job roles. Identify where MFA and an access review should apply.','Authentication · authorisation · MFA · RBAC · AD · GPO · SSO · OAuth · OIDC'],
+        ['Protect information with cryptography','Understand how encryption, hashing, signatures and certificates solve different security problems. Learn why keys, secrets and certificate lifecycles must be managed carefully.','Compare a password hash, an encrypted file and a digitally signed document. State what each one provides and what it does not provide.','Symmetric · asymmetric · hash · salt · PKI · TLS · certificate · key rotation'],
+        ['Find, prioritise and fix weaknesses','Learn the vulnerability-management lifecycle: asset discovery, scanning, validation, severity assessment, remediation and verification. Understand why a finding needs context.','Use a permitted lab or sample report to rank three findings by exposure and impact. Write one clear remediation recommendation.','CVE · CVSS · false positive · authenticated scan · remediation · disclosure'],
+        ['Recognise common application risks','Understand how browsers, servers, APIs, sessions and databases interact. Explore common web weaknesses and the defensive controls that reduce them.','Use an authorised training lab to inspect a sample request and identify where input validation, output encoding or access control is needed.','OWASP · injection · XSS · access control · session · API · secure coding'],
+        ['Understand security monitoring','Learn how logs, alerts and a SIEM help analysts detect suspicious activity. Practise a structured triage process: validate, scope, assess impact, document and escalate.','Review sample authentication logs. Identify the user, source, timestamp and event pattern, then write a short incident note.','SIEM · event · alert · IOC · triage · escalation · incident response'],
+        ['Understand penetration testing responsibly','Learn the authorised assessment lifecycle, scope, rules of engagement, reconnaissance, validation and reporting. Keep testing controlled and evidence-based.','In a legal practice lab, document the scope, one finding, its impact and a safe remediation. Never test systems without explicit permission.','Scope · ROE · reconnaissance · enumeration · validation · evidence · report'],
+        ['Build a foundation in cloud computing','Compare IaaS, PaaS and SaaS and understand public, private and hybrid deployment models. Learn regions, availability zones and the shared-responsibility model.','Map a simple web application to cloud compute, network, storage and database services. Mark which security tasks belong to the provider and customer.','IaaS · PaaS · SaaS · region · AZ · shared responsibility · scalability'],
+        ['Secure AWS identities and services','Understand how AWS IAM controls access and how VPC, EC2 and S3 should be configured securely. Learn the purpose of audit, monitoring and threat-detection services.','Design a basic AWS account checklist: MFA, least-privilege role, private S3 bucket, restricted security group and audit logging.','IAM · role · policy · VPC · EC2 · S3 · CloudTrail · GuardDuty · KMS'],
+        ['Secure Microsoft Azure environments','Understand Azure subscriptions, resource groups, Entra ID, RBAC and Conditional Access. Learn how network controls, Key Vault and monitoring protect cloud resources.','Sketch a secure Azure setup with an Entra ID administrator, RBAC, a private subnet, NSG and Key Vault.','Entra ID · RBAC · Conditional Access · VNet · NSG · Key Vault · Defender for Cloud'],
+        ['Design secure cloud architecture','Bring identity, network segmentation, encryption, logging and resilience together. Understand zero trust and secure landing-zone principles.','Draw a simple secure cloud architecture. Show identity boundaries, private workloads, controlled egress, central logs and backup isolation.','Zero trust · landing zone · segmentation · encryption · posture · resilience'],
+        ['Connect security to governance and risk','Understand how policies, standards and controls support business objectives. Learn the purpose of risk registers, audits, evidence, privacy and continuity planning.','Create a mini risk register with three risks, likelihood, impact, owner, treatment and review date.','NIST CSF · ISO 27001 · CIS Controls · risk register · audit · BCP · DR'],
+        ['Turn knowledge into practical evidence','Build safe labs and demonstrate skills through repeatable exercises. Learn to document scope, setup, steps, observations, screenshots and remediation without exposing secrets.','Complete one small authorised lab and publish a concise write-up with objective, environment, findings, evidence and lessons learned.','Virtual lab · Wireshark · log review · cloud lab · documentation · remediation'],
+        ['Prepare for entry-level security work','Translate technical learning into clear explanations and workplace habits. Practise ticket handling, prioritisation, escalation, interview communication and continuous learning.','Prepare a one-page case study for a lab or project: problem, investigation, evidence, action, result and what you learned.','Portfolio · ticketing · communication · escalation · SOC · IAM · cloud security']
+      ];
+      slides.forEach((slide, index) => {
+        const detail = moduleDetails[index];
+        const panel = document.createElement('div');
+        panel.className = 'module-deep-dive';
+        panel.innerHTML = `<div class="module-detail"><h4>What you should understand</h4><p>${detail[0]}. ${detail[1]}</p></div><div class="module-detail"><h4>Try this practice task</h4><p>${detail[2]}</p></div><div class="module-detail" style="grid-column:1/-1"><h4>Key terms to remember</h4><p>${detail[3]}</p></div>`;
+        slide.appendChild(panel);
+        const choice = document.createElement('button');
+        choice.type = 'button'; choice.textContent = String(index + 1).padStart(2, '0');
+        choice.setAttribute('aria-label', `Go to module ${index + 1}`);
+        choice.addEventListener('click', () => goToModule(index));
+        modulePicker.appendChild(choice);
+      });
+      let current = 0;
+      function updateModuleState() {
+        const width = moduleTrack.clientWidth || 1;
+        current = Math.max(0, Math.min(slides.length - 1, Math.round(moduleTrack.scrollLeft / width)));
+        moduleCounter.textContent = `Module ${current + 1} of ${slides.length} · ${slides[current].querySelector('h3').textContent.replace(/^Module \d+ — /, '')}`;
+        moduleProgress.style.width = `${((current + 1) / slides.length) * 100}%`;
+        [...modulePicker.children].forEach((button, index) => button.setAttribute('aria-current', index === current ? 'step' : 'false'));
+        prevModules.disabled = current === 0; nextModules.disabled = current === slides.length - 1;
+      }
+      function goToModule(index) { slides[index]?.scrollIntoView({behavior:'smooth', block:'nearest', inline:'start'}); }
+      prevModules.addEventListener('click', () => goToModule(current - 1));
+      nextModules.addEventListener('click', () => goToModule(current + 1));
+      let scrollTimer;
+      moduleTrack.addEventListener('scroll', () => { clearTimeout(scrollTimer); scrollTimer = setTimeout(updateModuleState, 80); }, {passive:true});
+      window.addEventListener('resize', updateModuleState);
+      updateModuleState();
     }
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
