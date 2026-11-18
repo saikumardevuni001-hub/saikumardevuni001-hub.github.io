@@ -13,6 +13,8 @@ Responsive professional portfolio showcasing my cybersecurity experience, techni
 - Professional experience, education and certifications
 - Cybersecurity and cloud security project summaries
 - PDF resume preview and download for recruiters
+- Free beginner learning path for cybersecurity and cloud security
+- Public cyber-awareness guide covering common scams and defensive actions
 - Contact and professional profile links
 
 ## Repository structure

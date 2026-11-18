@@ -94,6 +94,21 @@
     .contact a { color: var(--cyan); overflow-wrap: anywhere; }
     footer { border-top: 1px solid var(--line); color: var(--muted); padding: 25px 0 35px; font-size: .88rem; }
     .small { font-size: .83rem; color: var(--muted); }
+    .learning-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .lesson-list { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+    .lesson-list li { margin: 6px 0; }
+    .resource-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+    .resource-links a { color: var(--cyan); font-weight: 700; font-size: .9rem; }
+    .safety-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .safety-card { border-left: 3px solid var(--cyan); }
+    .safety-card h3 { margin: 0 0 7px; font-size: 1rem; }
+    .safety-card p { color: var(--muted); margin: 0; font-size: .93rem; }
+    .callout { border: 1px solid rgba(94,234,212,.28); background: rgba(94,234,212,.06); border-radius: 16px; padding: 20px; }
+    .callout h3 { margin: 0 0 8px; }
+    .callout p { color: var(--muted); margin: 0; }
+    .steps { counter-reset: step; display: grid; gap: 12px; }
+    .step { display: flex; gap: 13px; align-items: flex-start; }
+    .step::before { counter-increment: step; content: counter(step); flex: 0 0 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; color: var(--cyan); background: rgba(94,234,212,.1); font-weight: 800; }
     @media (max-width: 800px) {
       .hero, .about-grid, .contact { grid-template-columns: 1fr; }
       .hero { padding: 70px 0 50px; gap: 28px; }
@@ -104,7 +119,7 @@
     }
     @media (max-width: 540px) {
       .wrap { width: min(100% - 28px, var(--max)); }
-      .grid-3, .certs, .certificate-grid { grid-template-columns: 1fr; }
+      .grid-3, .certs, .certificate-grid, .learning-grid, .safety-grid { grid-template-columns: 1fr; }
       .role { grid-template-columns: 1fr; gap: 4px; }
       section { padding: 52px 0; }
       .hero { padding-top: 58px; }
@@ -118,7 +133,7 @@
       <button class="menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
       <nav class="links" id="navLinks" aria-label="Main navigation">
         <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-        <a href="#education">Education</a><a href="#certificates">Certificates</a><a href="#projects">Projects</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+        <a href="#education">Education</a><a href="#certificates">Certificates</a><a href="#projects">Projects</a><a href="#learn">Learn from me</a><a href="#stay-safe">Stay safe</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -133,6 +148,8 @@
           <a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" download>Download Resume ↓</a>
           <a class="btn" href="#contact">Get in touch ↗</a>
           <a class="btn" href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn profile ↗</a>
+          <a class="btn" href="#learn">Learn from me ↗</a>
+          <a class="btn" href="#stay-safe">Stay safe online ↗</a>
         </div>
       </div>
       <aside class="profile-card">
@@ -225,7 +242,7 @@
 
     <section id="certificates">
       <div class="wrap">
-        <div class="section-head"><div class="kicker">Credentials & recognition</div><h2>Certificates & achievements</h2><p class="sub">Selected credentials and awards. Select any certificate image to view it in full size. Verification links are provided only where an official credential URL is available.</p></div>
+        <div class="section-head"><div class="kicker">Credentials & recognition</div><h2>Certificates & achievements</h2><p class="sub">Selected credentials and awards. Select any certificate image to view it in full size. These images are provided for viewing. For formal credential verification, use the issuing organisation’s official verification service where available.</p></div>
         <div class="certificate-grid">
           <article class="card certificate-card"><a class="preview" href="assets/ec-council-certified-ethical-hacker.jpg" target="_blank" rel="noopener"><img src="assets/ec-council-certified-ethical-hacker.jpg" alt="EC-Council Certified Ethical Hacker certificate"></a><div class="certificate-info"><h3>Certified Ethical Hacker (CEH)</h3><p>EC-Council · Passed March 2026</p><div class="certificate-actions"><a href="assets/ec-council-certified-ethical-hacker.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
           <article class="card certificate-card"><a class="preview" href="assets/google-cybersecurity-professional-certificate.jpg" target="_blank" rel="noopener"><img src="assets/google-cybersecurity-professional-certificate.jpg" alt="Google Cybersecurity Professional Certificate"></a><div class="certificate-info"><h3>Google Cybersecurity Professional Certificate</h3><p>Google · Coursera · Completed April 2025</p><div class="certificate-actions"><a href="assets/google-cybersecurity-professional-certificate.jpg" target="_blank" rel="noopener">View certificate ↗</a></div></div></article>
@@ -254,7 +271,86 @@
           <article class="card item"><div class="icon">07</div><h3>Cloud Computing & Security Capstone</h3><p>Evaluated AWS infrastructure vulnerabilities and proposed IAM hardening and S3 bucket policy controls.</p><span class="small">Boston Institute of Analytics</span></article>
           <article class="card item"><div class="icon">08</div><h3>Cloud Security in Enterprises Research</h3><p>Analysed breach case studies and developed a risk-management framework aligned with NIST CSF.</p><span class="small">EC-Council University</span></article>
         </div>
-        <p class="small" style="margin-top:16px">Project summaries are based on the project descriptions in the supplied resume. Confirm that each description accurately reflects your individual contribution before publishing.</p>
+      </div>
+    </section>
+
+    <section id="learn">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Free learning corner</div>
+          <h2>Learn from me: Cybersecurity & Cloud Security Basics</h2>
+          <p class="sub">A free, beginner-friendly learning path for students, job seekers and anyone who wants to understand how to protect devices, accounts, networks and cloud environments. Learn at your own pace; no paid course is required to use this guide.</p>
+        </div>
+        <div class="learning-grid">
+          <article class="card item"><div class="icon">01</div><h3>Cybersecurity foundations</h3><p>Understand confidentiality, integrity and availability (CIA), assets, threats, vulnerabilities, risk, security controls and defence in depth.</p><ul class="lesson-list"><li>How data, devices and accounts can be exposed.</li><li>Authentication, authorisation and least privilege.</li><li>Updates, backups, encryption and secure configuration.</li></ul></article>
+          <article class="card item"><div class="icon">02</div><h3>Networking essentials</h3><p>Learn how systems communicate and where common security controls fit.</p><ul class="lesson-list"><li>IP addresses, ports, TCP/UDP, DNS, HTTP and HTTPS.</li><li>Routers, switches, firewalls, VPNs and Wi-Fi security.</li><li>Why network segmentation and monitoring matter.</li></ul></article>
+          <article class="card item"><div class="icon">03</div><h3>Endpoint and account protection</h3><p>Build safe habits for laptops, phones, browsers and online accounts.</p><ul class="lesson-list"><li>Use unique passwords with a password manager.</li><li>Enable MFA; prefer passkeys or authenticator methods where supported.</li><li>Keep operating systems, apps and browsers updated.</li></ul></article>
+          <article class="card item"><div class="icon">04</div><h3>Security monitoring and response</h3><p>Learn how defenders notice suspicious activity and respond calmly.</p><ul class="lesson-list"><li>Recognise unusual logins, alerts and unexpected changes.</li><li>Understand logs, SIEM, incident triage and escalation.</li><li>Preserve evidence and report incidents promptly.</li></ul></article>
+          <article class="card item"><div class="icon">05</div><h3>Cloud security fundamentals</h3><p>Understand shared responsibility and the controls used to protect cloud services.</p><ul class="lesson-list"><li>Identity and access management: users, roles and least privilege.</li><li>Secure storage: private-by-default buckets, access policies and encryption.</li><li>Network controls, security groups, logging, backups and key management.</li></ul></article>
+          <article class="card item"><div class="icon">06</div><h3>Safe hands-on practice</h3><p>Practice only in systems you own or have explicit permission to test.</p><ul class="lesson-list"><li>Build a small virtual lab or use authorised training labs.</li><li>Document the objective, steps, observations and remediation.</li><li>Never scan, access or test another person’s system without permission.</li></ul></article>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3 style="margin:0 0 8px">Free learning resources</h3>
+          <p class="small">These official learning portals offer free learning content or free course options. Some platforms may offer optional paid certificates, subscriptions or services; check the course terms before enrolling.</p>
+          <div class="resource-links">
+            <a href="https://skillsforall.com/" target="_blank" rel="noopener">Cisco Skills for All ↗</a>
+            <a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener">Microsoft Learn ↗</a>
+            <a href="https://skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder ↗</a>
+            <a href="https://cloud.google.com/learn/training" target="_blank" rel="noopener">Google Cloud Training ↗</a>
+            <a href="https://www.cisa.gov/secure-our-world" target="_blank" rel="noopener">CISA Secure Our World ↗</a>
+            <a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger Web Security Academy ↗</a>
+            <a href="https://tryhackme.com/" target="_blank" rel="noopener">TryHackMe ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stay-safe">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Public cyber awareness</div>
+          <h2>Stay Safe: Understand Hacker Tactics</h2>
+          <p class="sub">Attackers often exploit urgency, trust, fear and curiosity rather than advanced technology. Learn the warning signs, pause before acting and verify requests through a separate trusted channel.</p>
+        </div>
+        <div class="safety-grid">
+          <article class="card safety-card"><h3>1. Phishing emails and fake links</h3><p>Messages may imitate banks, delivery companies, employers or government services. Check the full sender address and destination domain. Do not open unexpected links or attachments; visit the known official website or app yourself.</p></article>
+          <article class="card safety-card"><h3>2. Smishing and messaging scams</h3><p>SMS, WhatsApp, Telegram and social-media messages may claim a parcel is held, an account will be blocked or a payment is pending. Do not use the message link or call its supplied number; verify independently.</p></article>
+          <article class="card safety-card"><h3>3. Vishing and impersonation calls</h3><p>Scammers may pretend to be bank staff, police, technical support or a company executive. Never disclose passwords, PINs, CVVs or OTPs. End the call and contact the organisation using a trusted number.</p></article>
+          <article class="card safety-card"><h3>4. Social engineering and urgency</h3><p>Attackers create panic, authority, secrecy or an attractive reward to make people bypass normal checks. Be cautious of “act now”, “keep this secret” or “you will lose access” demands. Verify unusual requests with the person through another channel.</p></article>
+          <article class="card safety-card"><h3>5. OTP, MFA fatigue and account takeover</h3><p>Never share an OTP or approve an unexpected sign-in prompt. Repeated MFA prompts can be an attack attempt. Deny unexpected prompts, change the password from the official site and report the activity to the service provider.</p></article>
+          <article class="card safety-card"><h3>6. Password reuse and credential theft</h3><p>If one website is breached, reused passwords can put other accounts at risk. Use a unique password for every service, store them in a reputable password manager and enable MFA or passkeys where available.</p></article>
+          <article class="card safety-card"><h3>7. Malicious attachments and downloads</h3><p>Unexpected invoices, job offers, APK files, cracked software and macro-enabled documents may contain malware. Download software only from official sources; do not enable macros or bypass security warnings for an unexpected file.</p></article>
+          <article class="card safety-card"><h3>8. QR-code scams (quishing)</h3><p>A QR code can hide a fraudulent website or payment destination. Preview the destination before opening it, check the domain carefully and never enter credentials or payment details just because a QR code is displayed.</p></article>
+          <article class="card safety-card"><h3>9. Fake websites, apps and support pop-ups</h3><p>Lookalike domains, fake app listings and alarming pop-ups may request remote access or payment. Install apps from official stores, check the publisher and never grant remote-control access to an unsolicited caller.</p></article>
+          <article class="card safety-card"><h3>10. Public Wi-Fi and rogue hotspots</h3><p>Fake hotspots can imitate legitimate network names. Confirm the correct network with the venue, avoid sensitive transactions on unknown networks, use HTTPS and a trusted VPN when appropriate, and turn off auto-join for unknown Wi-Fi.</p></article>
+          <article class="card safety-card"><h3>11. SIM-swap and mobile-number takeover</h3><p>A criminal may try to transfer your phone number to another SIM to intercept calls or SMS. Protect your mobile account with a carrier PIN or port-out lock where available; contact your carrier immediately if service unexpectedly stops.</p></article>
+          <article class="card safety-card"><h3>12. Deepfake voice and video scams</h3><p>AI-generated voices or videos can imitate relatives, managers or public figures. Verify urgent money or information requests using a known number and a pre-agreed family or workplace verification phrase.</p></article>
+          <article class="card safety-card"><h3>13. Business email compromise and payment fraud</h3><p>Attackers may compromise or imitate a supplier or manager and request new bank details or urgent transfers. Confirm payment changes using a previously verified contact and follow dual-approval procedures.</p></article>
+          <article class="card safety-card"><h3>14. USB baiting and unknown devices</h3><p>A found USB drive or unknown charging accessory may be unsafe. Do not plug unknown devices into work or personal systems; hand found devices to the responsible IT or security team.</p></article>
+          <article class="card safety-card"><h3>15. Ransomware and data extortion</h3><p>Malware may encrypt files or steal data and demand payment. Keep offline or protected backups, patch systems, use endpoint protection and report suspected ransomware immediately. Do not try to investigate on a work device without IT guidance.</p></article>
+          <article class="card safety-card"><h3>16. Cloud and data exposure</h3><p>Public storage, excessive permissions, exposed API keys and unprotected backups can expose sensitive information. Use least privilege, private-by-default storage, MFA, secret management, encryption and audit logging.</p></article>
+        </div>
+        <div class="callout" style="margin-top:18px">
+          <h3>Before you click, pay, share or approve — STOP</h3>
+          <div class="steps">
+            <div class="step"><div><strong>Stop</strong><br><span class="small">Do not react to urgency, threats or unexpected rewards.</span></div></div>
+            <div class="step"><div><strong>Think</strong><br><span class="small">Was this message or request expected? Is it asking for money, credentials, an OTP or remote access?</span></div></div>
+            <div class="step"><div><strong>Verify</strong><br><span class="small">Contact the person or organisation using a trusted number, saved contact or official app — not the details in the message.</span></div></div>
+            <div class="step"><div><strong>Protect and report</strong><br><span class="small">Block/report the sender, preserve relevant evidence and inform your bank, service provider or IT/security team as appropriate.</span></div></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3 style="margin:0 0 8px">If you clicked a suspicious link or shared information</h3>
+          <ul class="lesson-list">
+            <li>Stop interacting with the page or caller. Do not enter more information or approve prompts.</li>
+            <li>From a trusted device, change the affected password and any reused passwords; sign out other sessions if the service allows it.</li>
+            <li>Contact your bank immediately if payment details, card details, UPI access or banking credentials may be exposed.</li>
+            <li>Run a security scan and seek help from your IT/security team if a file was opened or software installed.</li>
+            <li>Preserve the message, sender details, transaction references and screenshots for reporting; do not forward malicious links to others.</li>
+            <li>In India, report suspected cyber financial fraud promptly through the official helpline 1930 and the National Cyber Crime Reporting Portal at <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener">cybercrime.gov.in ↗</a>.</li>
+          </ul>
+        </div>
+        <p class="small" style="margin-top:14px">This guide is general awareness education, not incident-response, legal or financial advice. For workplace incidents, follow your organisation’s security policy and contact its IT/security team immediately.</p>
       </div>
     </section>
 
