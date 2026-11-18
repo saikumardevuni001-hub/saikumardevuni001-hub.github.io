@@ -34,3 +34,13 @@ Responsive professional portfolio showcasing my cybersecurity experience, techni
 - GitHub: https://github.com/saikumardevuni001-hub
 
 © Sai Kumar Devuni. All rights reserved.
+
+
+## Project portfolio
+
+Includes six cybersecurity projects documented in the Spinnaker Analytics experience letter, plus separate academic cloud-security work.
+
+## Connect
+
+- Instagram: https://www.instagram.com/sai_kumar_0.0.1/
+- WhatsApp username: Sai_Kumar_001 (search this username in WhatsApp; add a direct chat URL when available).

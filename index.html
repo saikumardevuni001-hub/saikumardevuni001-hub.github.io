@@ -41,9 +41,26 @@
     .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--line); font-weight: 700; transition: .2s; }
     .btn.primary { background: linear-gradient(110deg, #5eead4, #78aaff); color: #07111d; border: 0; }
     .btn:hover { transform: translateY(-2px); }
+    /* Subtle motion: keep the portfolio polished without distracting visitors. */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes softFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    .hero-copy { animation: fadeUp .75s ease both; }
+    .profile-card { animation: fadeUp .9s .12s ease both; }
+    .avatar-link { animation: softFloat 5s ease-in-out infinite; }
+    .card, .profile-card, .btn, .tag, .certificate-card { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .card:hover, .certificate-card:hover { transform: translateY(-4px); border-color: rgba(94,234,212,.38); box-shadow: 0 16px 38px rgba(0,0,0,.2); }
+    .item { animation: fadeUp .65s ease both; }
+    .contact-social { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
+    .social-link { display:inline-flex; align-items:center; gap:9px; border:1px solid var(--line); background:rgba(255,255,255,.035); padding:11px 15px; border-radius:12px; font-weight:700; }
+    .social-link:hover { transform:translateY(-3px); border-color:rgba(94,234,212,.45); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
     .profile-card, .card { background: linear-gradient(150deg, rgba(19,31,51,.96), rgba(12,21,36,.96)); border: 1px solid var(--line); border-radius: var(--radius); }
     .profile-card { padding: 26px; box-shadow: 0 24px 70px rgba(0,0,0,.25); }
     .avatar { width: 112px; height: 112px; border-radius: 24px; display: block; object-fit: cover; object-position: center 35%; border: 2px solid rgba(94,234,212,.45); box-shadow: 0 12px 32px rgba(0,0,0,.28); }
+    .avatar-link { display: inline-block; border-radius: 24px; line-height: 0; }
+    .avatar-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
     .profile-card h3 { margin: 17px 0 2px; font-size: 1.25rem; }
     .profile-card p { margin: 0; color: var(--muted); font-size: .94rem; }
     .profile-meta { display: grid; gap: 13px; margin-top: 23px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
@@ -153,7 +170,9 @@
         </div>
       </div>
       <aside class="profile-card">
-        <img class="avatar" src="assets/sai-kumar-devuni.jpg" alt="Portrait of Sai Kumar Devuni">
+        <a class="avatar-link" href="assets/sai-kumar-devuni.jpg" target="_blank" rel="noopener" aria-label="Open full-size portrait of Sai Kumar Devuni" title="Open full-size photo">
+          <img class="avatar" src="assets/sai-kumar-devuni.jpg" alt="Portrait of Sai Kumar Devuni" style="cursor: zoom-in;">
+        </a>
         <h3>Sai Kumar Devuni</h3>
         <p>Cloud Security & Cybersecurity</p>
         <div class="profile-meta">
@@ -269,15 +288,19 @@
     <section id="projects">
       <div class="wrap">
         <div class="section-head"><div class="kicker">Selected technical work</div><h2>Projects & case studies</h2><p class="sub">A selection of cybersecurity, network security and cloud security projects demonstrating my technical interests and applied learning.</p></div>
+        <div class="section-head" style="margin-top:10px"><div class="kicker">Spinnaker Analytics LLC · Six documented projects</div><h3>Cybersecurity projects</h3><p class="sub">The following six project titles and objectives are drawn from the Spinnaker Analytics experience letter.</p></div>
         <div class="grid-3">
-          <article class="card item"><div class="icon">01</div><h3>Secure Firmware Update Mechanism</h3><p>Configured secure boot, code signing and encrypted device communication to block unauthenticated IoT execution.</p></article>
-          <article class="card item"><div class="icon">02</div><h3>Mobile Banking Security</h3><p>Explored AES encryption, API rate-limiting and input validation to reduce injection and data-leakage risks.</p></article>
-          <article class="card item"><div class="icon">03</div><h3>Enterprise MFA Implementation</h3><p>Designed OTP and biometric login workflows to strengthen authentication across distributed resources.</p></article>
-          <article class="card item"><div class="icon">04</div><h3>Automated Pentesting Framework</h3><p>Built a modular open-source toolkit concept for scanning, exploitation, audit logging and role-based tester permissions.</p></article>
-          <article class="card item"><div class="icon">05</div><h3>Zero Trust Network Architecture</h3><p>Designed VPN segmentation, firewall rules and identity-driven controls to limit lateral movement across offices.</p></article>
-          <article class="card item"><div class="icon">06</div><h3>Small Business Defense Framework</h3><p>Mapped open-source security tooling to industry standards and explored packet filtering against DoS/DDoS exposure.</p></article>
-          <article class="card item"><div class="icon">07</div><h3>Cloud Computing & Security Capstone</h3><p>Evaluated AWS infrastructure vulnerabilities and proposed IAM hardening and S3 bucket policy controls.</p><span class="small">Boston Institute of Analytics</span></article>
-          <article class="card item"><div class="icon">08</div><h3>Cloud Security in Enterprises Research</h3><p>Analysed breach case studies and developed a risk-management framework aligned with NIST CSF.</p><span class="small">EC-Council University</span></article>
+          <article class="card item"><div class="icon">01</div><h3>Secure Firmware Update Mechanism for IoT Devices</h3><p>Secure boot, code signing, pre- and post-installation firmware verification, encrypted device-to-server communication, and controlled update scheduling.</p></article>
+          <article class="card item"><div class="icon">02</div><h3>Security Measures for a Mobile Banking Application</h3><p>Assess application security gaps; strengthen encryption for data at rest and in transit, authentication, authorisation, secure coding, monitoring and user fraud awareness.</p></article>
+          <article class="card item"><div class="icon">03</div><h3>Robust Multi-Factor Authentication (MFA) System</h3><p>Strengthen enterprise authentication to protect organisational resources against unauthorised access and potential security breaches.</p></article>
+          <article class="card item"><div class="icon">04</div><h3>Automated Penetration Testing Framework</h3><p>Plan a modular open-source testing framework for scanning, controlled exploitation, reporting, permission workflows, role-based access, monitoring and audit logs.</p></article>
+          <article class="card item"><div class="icon">05</div><h3>Secure Network Architecture for a Large Enterprise</h3><p>Design security for a distributed enterprise with multiple locations and remote offices to reduce unauthorised access and data-breach risks.</p></article>
+          <article class="card item"><div class="icon">06</div><h3>Cybersecurity Framework for Small Businesses</h3><p>Assess small-business threats, select practices from established frameworks, use suitable open-source tools and configure packet filtering to mitigate DoS/DDoS threats.</p></article>
+        </div>
+        <div class="section-head" style="margin-top:30px"><div class="kicker">Academic work</div><h3>Additional cloud security projects & research</h3></div>
+        <div class="grid-3">
+          <article class="card item"><div class="icon">A1</div><h3>Cloud Computing & Security Capstone</h3><p>Evaluated AWS infrastructure vulnerabilities and proposed IAM hardening and S3 bucket policy controls.</p><span class="small">Boston Institute of Analytics</span></article>
+          <article class="card item"><div class="icon">A2</div><h3>Cloud Security in Enterprises Research</h3><p>Analysed breach case studies and developed a risk-management framework aligned with NIST CSF.</p><span class="small">EC-Council University</span></article>
         </div>
       </div>
     </section>
@@ -397,6 +420,8 @@
         <div class="contact">
           <div class="card"><h3>Email</h3><p><a href="mailto:saikumardevuni001@gmail.com">saikumardevuni001@gmail.com</a></p></div>
           <div class="card"><h3>LinkedIn</h3><p><a href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">linkedin.com/in/saikumardevuni001</a></p></div>
+          <div class="card"><h3>Instagram</h3><p><a href="https://www.instagram.com/sai_kumar_0.0.1/" target="_blank" rel="noopener">@sai_kumar_0.0.1 ↗</a></p></div>
+          <div class="card"><h3>WhatsApp</h3><p><strong>@Sai_Kumar_001</strong></p><p class="small">Search this username in WhatsApp. A direct chat link can be added when you provide your official WhatsApp profile link.</p></div>
         </div>
       </div>
     </section>
