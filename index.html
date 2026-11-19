@@ -75,13 +75,12 @@
     .module-track > article { flex:0 0 100%; width:100%; scroll-snap-align:start; min-width:0; padding:clamp(22px,4vw,36px); }
     .module-track > article h3 { font-size:clamp(1.25rem,2.4vw,1.7rem); margin:10px 0 18px; }
     .module-track .lesson-list { line-height:1.8; }
-    .module-controls { display:flex; justify-content:center; align-items:center; gap:12px; margin:0 0 14px; min-height:40px; }
-    .module-control-buttons { display:contents; }
-    .module-control-buttons button { position:absolute; z-index:2; top:54%; transform:translateY(-50%); min-width:46px; min-height:46px; display:flex; align-items:center; justify-content:center; gap:7px; border:1px solid rgba(94,234,212,.3); color:var(--text); background:rgba(16,26,43,.94); backdrop-filter:blur(12px); border-radius:999px; padding:0 14px; cursor:pointer; font-size:.82rem; font-weight:700; white-space:nowrap; box-shadow:0 8px 24px rgba(0,0,0,.25); transition:background .2s,border-color .2s,transform .2s; }
-    .module-control-buttons .module-prev { left:0; }
-    .module-control-buttons .module-next { right:0; }
-    .module-control-buttons button:hover:not(:disabled) { border-color:var(--cyan); color:var(--cyan); background:#14263a; transform:translateY(-50%) scale(1.05); }
-    .module-control-buttons button:disabled { opacity:.28; cursor:not-allowed; }
+    .module-counter-row { display:flex; justify-content:center; align-items:center; min-height:36px; margin:0 0 8px; }
+    .module-controls-outside { display:flex; justify-content:space-between; align-items:center; gap:14px; max-width:900px; margin:14px auto 0; padding:0 4px; }
+    .module-control-buttons { display:flex; gap:12px; }
+    .module-control-buttons button { position:static; transform:none; min-width:112px; min-height:44px; display:flex; align-items:center; justify-content:center; gap:7px; border:1px solid rgba(94,234,212,.3); color:var(--text); background:rgba(16,26,43,.94); border-radius:12px; padding:0 16px; cursor:pointer; font-size:.86rem; font-weight:700; white-space:nowrap; box-shadow:0 8px 24px rgba(0,0,0,.2); transition:background .2s,border-color .2s,transform .2s; }
+    .module-control-buttons button:hover:not(:disabled) { border-color:var(--cyan); color:var(--cyan); background:#14263a; transform:translateY(-2px); }
+    .module-control-buttons button:disabled { opacity:.32; cursor:not-allowed; }
     .module-hint { color:var(--muted); font-size:.9rem; }
     .module-progress { height:5px; background:var(--line); border-radius:20px; overflow:hidden; margin:0 3px 18px; }
     .module-progress span { display:block; height:100%; width:6.25%; background:linear-gradient(90deg,var(--cyan),#8b5cf6); border-radius:20px; transition:width .35s ease; }
@@ -174,6 +173,15 @@
     .image-viewer.open { display:grid; }
     .image-viewer img { max-width:min(1100px,94vw); max-height:82vh; object-fit:contain; background:#fff; border-radius:12px; box-shadow:0 24px 90px #000; }
     .viewer-close { position:absolute; top:18px; right:22px; border:1px solid var(--line); border-radius:50%; width:46px; height:46px; color:var(--text); background:#172238; font-size:1.5rem; cursor:pointer; }
+    .resume-viewer { position:fixed; inset:0; z-index:1100; display:none; padding:76px 3vw 3vh; background:rgba(2,6,14,.96); backdrop-filter:blur(12px); }
+    .resume-viewer.open { display:block; }
+    .resume-viewer iframe { width:100%; height:100%; border:1px solid var(--line); border-radius:12px; background:#fff; }
+    .resume-card { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; background:radial-gradient(circle at 85% 15%,rgba(94,234,212,.13),transparent 32%),linear-gradient(120deg,#14253c,#0d1728); }
+    .form-success { grid-column:1/-1; padding:12px 15px; border:1px solid rgba(94,234,212,.4); border-radius:12px; color:var(--cyan); background:rgba(94,234,212,.08); font-weight:700; }
+    .learning-grid .item { position:relative; overflow:hidden; }
+    .learning-grid .item::after { content:""; position:absolute; width:130px; height:130px; right:-48px; top:-48px; border-radius:50%; background:radial-gradient(circle,rgba(94,234,212,.13),transparent 70%); pointer-events:none; }
+    .safety-card { position:relative; overflow:hidden; }
+    .safety-card::after { content:""; position:absolute; right:14px; top:12px; width:28px; height:28px; border:1px solid rgba(94,234,212,.22); border-radius:9px; background:linear-gradient(135deg,rgba(94,234,212,.12),rgba(120,170,255,.08)); }
     .preview, .avatar-link { cursor:zoom-in; }
     .module-visual { min-height:170px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px; margin:-4px 0 20px; overflow:hidden; border:1px solid rgba(94,234,212,.2); border-radius:16px; background:radial-gradient(circle at 80% 15%,rgba(94,234,212,.2),transparent 38%),linear-gradient(120deg,#14253c,#0d1728); }
     .module-visual strong { display:block; font-size:clamp(1.1rem,2vw,1.5rem); color:var(--text); }
@@ -204,8 +212,10 @@
     @media (max-width: 540px) {
       .wrap { width: min(100% - 28px, var(--max)); }
       .grid-3, .certs, .certificate-grid, .learning-grid, .safety-grid { grid-template-columns: 1fr; }
-      .module-carousel { padding:0 42px; }
-      .module-control-buttons button { width:36px; height:36px; }
+      .module-carousel { padding:0; }
+      .module-control-buttons button { min-width:0; min-height:40px; padding:0 12px; }
+      .module-controls-outside { align-items:flex-start; flex-direction:column; }
+      .module-control-buttons { width:100%; justify-content:space-between; }
       .module-hint { font-size:.82rem; text-align:center; }
       .module-deep-dive { grid-template-columns:1fr; }
       .role { grid-template-columns: 1fr; gap: 4px; }
@@ -233,7 +243,7 @@
         <h1>Hi, I'm Sai Kumar.<br><span class="gradient">Securing the digital world.</span></h1>
         <p class="lead">Cybersecurity professional with experience across security assessment and IT infrastructure operations. Focused on cybersecurity as my core discipline, with a career direction toward Cloud Security Engineering and Cloud Security Architecture.</p>
         <div class="actions">
-          <a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" download>Download Resume ↓</a>
+          <a class="btn primary" href="#resume">View Resume ↓</a>
           <a class="btn" href="#contact">Get in touch ↗</a>
           <a class="btn" href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn profile ↗</a>
           <a class="btn" href="#learn">Learn from me ↗</a>
@@ -315,7 +325,7 @@
           <article class="card role">
             <div class="date">Mar 2025 – Jun 2025</div>
             <div><h3>Associate L1 Intern</h3><div class="org">Infotact Solutions</div>
-              <ul><li>Participated in an entry-level technical role and developed foundational operational experience.</li></ul>
+              <ul><li>Completed an Associate L1 internship with exposure to entry-level technical and cybersecurity work practices.</li><li>Developed foundational experience in following assigned tasks, documenting work and communicating progress in a structured team environment.</li></ul>
             </div>
           </article>
         </div>
@@ -342,17 +352,17 @@
       <div class="wrap">
         <div class="section-head"><div class="kicker">Credentials & recognition</div><h2>Certificates & achievements</h2><p class="sub">Selected credentials and awards. Select any certificate image to view it in full size. These images are provided for viewing. For formal credential verification, use the issuing organisation’s official verification service where available.</p></div>
         <div class="certificate-grid">
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/ec-council-certified-ethical-hacker.jpg"><img src="assets/ec-council-certified-ethical-hacker.jpg" alt="EC-Council Certified Ethical Hacker certificate"></a><div class="certificate-info"><h3>Certified Ethical Hacker (CEH)</h3><p>EC-Council · Passed March 2026</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/google-cybersecurity-professional-certificate.jpg"><img src="assets/google-cybersecurity-professional-certificate.jpg" alt="Google Cybersecurity Professional Certificate"></a><div class="certificate-info"><h3>Google Cybersecurity Professional Certificate</h3><p>Google · Coursera · Completed April 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/bia-master-diploma-ethical-hacking.jpg"><img src="assets/bia-master-diploma-ethical-hacking.jpg" alt="Boston Institute of Analytics Master Diploma in Ethical Hacking"></a><div class="certificate-info"><h3>Master Diploma – Ethical Hacking</h3><p>Boston Institute of Analytics · October 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/bia-master-diploma-cyber-security.jpg"><img src="assets/bia-master-diploma-cyber-security.jpg" alt="Boston Institute of Analytics Master Diploma in Cyber Security"></a><div class="certificate-info"><h3>Master Diploma – Cyber Security</h3><p>Boston Institute of Analytics · October 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/ec-council-presidents-award.jpg"><img src="assets/ec-council-presidents-award.jpg" alt="EC-Council University President's Award certificate"></a><div class="certificate-info"><h3>The President’s Award</h3><p>EC-Council University · December 2024</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/cisco-introduction-to-cybersecurity.jpg"><img src="assets/cisco-introduction-to-cybersecurity.jpg" alt="Cisco Networking Academy Introduction to Cybersecurity certificate"></a><div class="certificate-info"><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy · September 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/eccu-501-course-record.jpg"><img src="assets/eccu-501-course-record.jpg" alt="EC-Council University ECCU 501 course degree audit"></a><div class="certificate-info"><h3>ECCU 501 – Ethical Hacking and Countermeasures</h3><p>EC-Council University · Course completion record</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/infotact-certificate-internship.jpg"><img src="assets/infotact-certificate-internship.jpg" alt="Infotact Solutions cybersecurity internship certificate"></a><div class="certificate-info"><h3>Cybersecurity Internship Certificate</h3><p>Infotact Solutions · March–June 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
-          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/infotact-certificate-training.jpg"><img src="assets/infotact-certificate-training.jpg" alt="Infotact Solutions cybersecurity training certificate"></a><div class="certificate-info"><h3>Cybersecurity Training Certificate</h3><p>Infotact Solutions · March–June 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/ec-council-certified-ethical-hacker.jpg"><img src="assets/ec-council-certified-ethical-hacker.jpg" alt="EC-Council Certified Ethical Hacker certificate"></a><div class="certificate-info"><h3>Certified Ethical Hacker (CEH)</h3><p>EC-Council · Passed March 2026</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/ec-council-certified-ethical-hacker.jpg">View certificate</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/google-cybersecurity-professional-certificate.jpg"><img src="assets/google-cybersecurity-professional-certificate.jpg" alt="Google Cybersecurity Professional Certificate"></a><div class="certificate-info"><h3>Google Cybersecurity Professional Certificate</h3><p>Google · Coursera · Completed April 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/google-cybersecurity-professional-certificate.jpg">View certificate</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/bia-master-diploma-ethical-hacking.jpg"><img src="assets/bia-master-diploma-ethical-hacking.jpg" alt="Boston Institute of Analytics Master Diploma in Ethical Hacking"></a><div class="certificate-info"><h3>Master Diploma – Ethical Hacking</h3><p>Boston Institute of Analytics · October 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/bia-master-diploma-ethical-hacking.jpg">View diploma</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/bia-master-diploma-cyber-security.jpg"><img src="assets/bia-master-diploma-cyber-security.jpg" alt="Boston Institute of Analytics Master Diploma in Cyber Security"></a><div class="certificate-info"><h3>Master Diploma – Cyber Security</h3><p>Boston Institute of Analytics · October 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/bia-master-diploma-cyber-security.jpg">View diploma</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/ec-council-presidents-award.jpg"><img src="assets/ec-council-presidents-award.jpg" alt="EC-Council University President's Award certificate"></a><div class="certificate-info"><h3>The President’s Award</h3><p>EC-Council University · December 2024</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/ec-council-presidents-award.jpg">View award</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/cisco-introduction-to-cybersecurity.jpg"><img src="assets/cisco-introduction-to-cybersecurity.jpg" alt="Cisco Networking Academy Introduction to Cybersecurity certificate"></a><div class="certificate-info"><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy · September 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/cisco-introduction-to-cybersecurity.jpg">View certificate</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/eccu-501-course-record.jpg"><img src="assets/eccu-501-course-record.jpg" alt="EC-Council University ECCU 501 course degree audit"></a><div class="certificate-info"><h3>ECCU 501 – Ethical Hacking and Countermeasures</h3><p>EC-Council University · Course completion record</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/eccu-501-course-record.jpg">View certificate</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/infotact-certificate-internship.jpg"><img src="assets/infotact-certificate-internship.jpg" alt="Infotact Solutions cybersecurity internship certificate"></a><div class="certificate-info"><h3>Cybersecurity Internship Certificate</h3><p>Infotact Solutions · March–June 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/infotact-certificate-internship.jpg">View certificate</a></div></div></article>
+          <article class="card certificate-card"><a class="preview image-preview" data-image="assets/infotact-certificate-training.jpg"><img src="assets/infotact-certificate-training.jpg" alt="Infotact Solutions cybersecurity training certificate"></a><div class="certificate-info"><h3>Cybersecurity Training Certificate</h3><p>Infotact Solutions · March–June 2025</p><div class="certificate-actions"><a href="#" class="image-preview" data-image="assets/infotact-certificate-training.jpg">View certificate</a></div></div></article>
         </div>
-        <div class="card" style="margin-top:18px"><h3 style="margin:0 0 6px">Additional professional document</h3><p class="small">Spinnaker Analytics experience letter (two pages).</p><div class="doc-list"><a href="#" class="image-preview" data-image="\1">View \2 in page</a><a href="#" class="image-preview" data-image="\1">View \2 in page</a></div></div>
+        <div class="card" style="margin-top:18px"><h3 style="margin:0 0 6px">Additional professional document</h3><p class="small">Spinnaker Analytics experience letter (two pages).</p><div class="doc-list"><a href="#" class="image-preview" data-image="assets/spinnaker-experience-letter-page-1.jpg">View page 1</a><a href="#" class="image-preview" data-image="assets/spinnaker-experience-letter-page-2.jpg">View page 2</a></div></div>
       </div>
     </section>
 
@@ -384,16 +394,21 @@
           <p class="sub">A free, beginner-friendly learning path for students, job seekers and anyone who wants to understand how to protect devices, accounts, networks and cloud environments. Learn at your own pace; no paid course is required to use this guide.</p>
         </div>
         <div class="learning-grid">
-          <article class="card item"><div class="icon">01</div><h3>Cybersecurity foundations</h3><p>Understand confidentiality, integrity and availability (CIA), assets, threats, vulnerabilities, risk, security controls and defence in depth.</p><ul class="lesson-list"><li>How data, devices and accounts can be exposed.</li><li>Authentication, authorisation and least privilege.</li><li>Updates, backups, encryption and secure configuration.</li></ul></article>
-          <article class="card item"><div class="icon">02</div><h3>Networking essentials</h3><p>Learn how systems communicate and where common security controls fit.</p><ul class="lesson-list"><li>IP addresses, ports, TCP/UDP, DNS, HTTP and HTTPS.</li><li>Routers, switches, firewalls, VPNs and Wi-Fi security.</li><li>Why network segmentation and monitoring matter.</li></ul></article>
-          <article class="card item"><div class="icon">03</div><h3>Endpoint and account protection</h3><p>Build safe habits for laptops, phones, browsers and online accounts.</p><ul class="lesson-list"><li>Use unique passwords with a password manager.</li><li>Enable MFA; prefer passkeys or authenticator methods where supported.</li><li>Keep operating systems, apps and browsers updated.</li></ul></article>
-          <article class="card item"><div class="icon">04</div><h3>Security monitoring and response</h3><p>Learn how defenders notice suspicious activity and respond calmly.</p><ul class="lesson-list"><li>Recognise unusual logins, alerts and unexpected changes.</li><li>Understand logs, SIEM, incident triage and escalation.</li><li>Preserve evidence and report incidents promptly.</li></ul></article>
-          <article class="card item"><div class="icon">05</div><h3>Cloud security fundamentals</h3><p>Understand shared responsibility and the controls used to protect cloud services.</p><ul class="lesson-list"><li>Identity and access management: users, roles and least privilege.</li><li>Secure storage: private-by-default buckets, access policies and encryption.</li><li>Network controls, security groups, logging, backups and key management.</li></ul></article>
-          <article class="card item"><div class="icon">06</div><h3>Safe hands-on practice</h3><p>Practice only in systems you own or have explicit permission to test.</p><ul class="lesson-list"><li>Build a small virtual lab or use authorised training labs.</li><li>Document the objective, steps, observations and remediation.</li><li>Never scan, access or test another person’s system without permission.</li></ul></article>
+          <article class="card item"><div class="icon">01</div><h3>Cybersecurity foundations</h3><p>Understand confidentiality, integrity and availability (CIA), assets, threats, vulnerabilities, risk, security controls and defence in depth.</p><ul class="lesson-list"><li>How data, devices and accounts can be exposed.</li><li>Authentication, authorisation and least privilege.</li><li>Updates, backups, encryption and secure configuration.</li><li>Outcome: explain one realistic risk and select a control that reduces its likelihood or impact.</li></ul></article>
+          <article class="card item"><div class="icon">02</div><h3>Networking essentials</h3><p>Learn how systems communicate and where common security controls fit.</p><ul class="lesson-list"><li>IP addresses, ports, TCP/UDP, DNS, HTTP and HTTPS.</li><li>Routers, switches, firewalls, VPNs and Wi-Fi security.</li><li>Why network segmentation and monitoring matter.</li><li>Practice: trace a DNS lookup and HTTPS connection in a lab or with trusted diagnostic tools.</li></ul></article>
+          <article class="card item"><div class="icon">03</div><h3>Endpoint and account protection</h3><p>Build safe habits for laptops, phones, browsers and online accounts.</p><ul class="lesson-list"><li>Use unique passwords with a password manager.</li><li>Enable MFA; prefer passkeys or authenticator methods where supported.</li><li>Keep operating systems, apps and browsers updated.</li><li>Practice: review device updates, screen lock, encryption and recovery options.</li></ul></article>
+          <article class="card item"><div class="icon">04</div><h3>Security monitoring and response</h3><p>Learn how defenders notice suspicious activity and respond calmly.</p><ul class="lesson-list"><li>Recognise unusual logins, alerts and unexpected changes.</li><li>Understand logs, SIEM, incident triage and escalation.</li><li>Preserve evidence and report incidents promptly.</li><li>Practice: write a short alert triage note with time, user, device, evidence and escalation decision.</li></ul></article>
+          <article class="card item"><div class="icon">05</div><h3>Cloud security fundamentals</h3><p>Understand shared responsibility and the controls used to protect cloud services.</p><ul class="lesson-list"><li>Identity and access management: users, roles and least privilege.</li><li>Secure storage: private-by-default buckets, access policies and encryption.</li><li>Network controls, security groups, logging, backups and key management.</li><li>Practice: design a private storage bucket and a least-privilege role in a sandbox account.</li></ul></article>
+          <article class="card item"><div class="icon">06</div><h3>Safe hands-on practice</h3><p>Practice only in systems you own or have explicit permission to test.</p><ul class="lesson-list"><li>Build a small virtual lab or use authorised training labs.</li><li>Document the objective, steps, observations and remediation.</li><li>Never scan, access or test another person’s system without permission.</li><li>Outcome: publish a redacted lab report with scope, method, evidence, risk and remediation.</li></ul></article>
+        </div>
+        <div class="callout" style="margin-top:18px">
+          <h3>How to learn effectively — without paying for a course</h3>
+          <p>Use a repeatable cycle: learn one concept, draw or explain it in your own words, practise in an authorised lab, record the evidence, and review what you would improve. Start with networking, Linux/Windows basics and IAM before moving into cloud controls. Never use real accounts, production systems or third-party networks as practice targets.</p>
+          <div class="tags" style="margin-top:14px"><span class="tag">Learn</span><span class="tag">Practise safely</span><span class="tag">Document</span><span class="tag">Review</span><span class="tag">Repeat</span></div>
         </div>
         <div class="section-head" style="margin-top:28px"><div class="kicker">Read the full syllabus</div><h2>Free Cybersecurity & Cloud Security Learning Path</h2><p class="sub">Follow this free, structured self-study syllabus from foundational concepts to practical cybersecurity and cloud security topics. Each module includes key lessons, an explanation, a practice task and important terms. External platforms may offer optional paid certificates or features.</p></div>
         <div class="module-carousel" aria-label="Course modules carousel">
-          <div class="module-controls"><span class="module-hint" id="moduleCounter" aria-live="polite">Module 1 of 16</span><div class="module-control-buttons"><button type="button" class="module-prev" aria-label="Previous module">← Previous</button><button type="button" class="module-next" aria-label="Next module">Next →</button></div></div>
+          <div class="module-counter-row"><span class="module-hint" id="moduleCounter" aria-live="polite">Module 1 of 16</span></div>
           <div class="module-progress" aria-hidden="true"><span id="moduleProgress"></span></div>
           <nav class="module-picker" id="modulePicker" aria-label="Choose a course module"></nav>
           <div class="module-track" id="moduleTrack" tabindex="0" aria-label="Course module slides">
@@ -415,6 +430,7 @@
           <article class="card item"><div class="icon">16</div><h3>Module 16 — Career readiness & continuous learning</h3><ul class="lesson-list"><li>Build a focused portfolio, lab notes and clear project write-ups.</li><li>Practise explaining a security issue, its business impact and remediation.</li><li>Learn ticket handling, documentation, escalation and communication.</li><li>Prepare for entry-level SOC, security analyst, IAM and cloud security roles.</li><li>Keep skills current through advisories, official documentation and ethical practice.</li></ul></article>
           </div>
         </div>
+        <div class="module-controls module-controls-outside"><span class="small">Navigate the syllabus</span><div class="module-control-buttons"><button type="button" class="module-prev" aria-label="Previous module">← Previous</button><button type="button" class="module-next" aria-label="Next module">Next →</button></div></div>
         <div class="card" style="margin-top:16px">
           <h3 style="margin:0 0 8px">Free learning resources</h3>
           <p class="small">These official learning portals offer free learning content or free course options. Some platforms may offer optional paid certificates, subscriptions or services; check the course terms before enrolling.</p>
@@ -466,6 +482,14 @@
           </div>
         </div>
         <div class="card" style="margin-top:16px">
+          <h3 style="margin:0 0 8px">Your everyday security checklist</h3>
+          <div class="grid-3" style="margin-top:12px">
+            <div><strong>Accounts</strong><ul class="lesson-list"><li>Unique passwords and MFA</li><li>Review recovery email and phone</li><li>Remove old sessions and unused apps</li></ul></div>
+            <div><strong>Devices</strong><ul class="lesson-list"><li>Automatic updates and screen lock</li><li>Device encryption and backups</li><li>Install software from trusted sources</li></ul></div>
+            <div><strong>Payments & data</strong><ul class="lesson-list"><li>Verify payment changes independently</li><li>Never share OTP, PIN or recovery codes</li><li>Keep sensitive files private and backed up</li></ul></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
           <h3 style="margin:0 0 8px">If you clicked a suspicious link or shared information</h3>
           <ul class="lesson-list">
             <li>Stop interacting with the page or caller. Do not enter more information or approve prompts.</li>
@@ -482,10 +506,10 @@
 
     <section id="resume">
       <div class="wrap">
-        <div class="section-head"><div class="kicker">Professional profile</div><h2>Professional Profile & Resume</h2><p class="sub">Download my resume in PDF format for a detailed overview of my professional experience, technical skills, education and certifications.</p></div>
-        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
-          <div><h3 style="margin:0 0 6px">Sai Kumar Devuni — Resume</h3><p class="small">PDF document · Updated November 2026</p></div>
-          <div class="actions" style="margin:0"><a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" download>Download PDF ↓</a><a class="btn" href="assets/Sai-Kumar-Devuni-Resume.pdf" target="_blank" rel="noopener">View Resume ↗</a></div>
+        <div class="section-head"><div class="kicker">Professional profile</div><h2>Professional Profile & Resume</h2><p class="sub">View my resume in a clear, high-resolution PDF preview. The website provides a viewing option rather than a download button.</p></div>
+        <div class="card resume-card">
+          <div><h3 style="margin:0 0 6px">Sai Kumar Devuni — Resume</h3><p class="small">High-resolution PDF · Updated November 2026</p></div>
+          <button class="btn primary" id="openResume" type="button">View Resume ↗</button>
         </div>
       </div>
     </section>
@@ -498,20 +522,27 @@
             <div class="kicker">Visitor connection</div>
             <h2>Thanks for visiting my portfolio.</h2>
             <p class="sub">If you are a recruiter, hiring manager, colleague, student or professional visitor, leave your details and a short message. I can then contact you back using the information you choose to share.</p>
-            <p class="privacy-note">Your details are not silently collected by this static website. Submitting opens your email application with the message prepared; it is sent only if you choose to send it.</p>
+            <p class="privacy-note">When you submit this form, your message is forwarded by FormSubmit to my inbox: saikumardevuni001@gmail.com. The first submission may trigger a one-time email verification step for me before delivery is activated.</p>
           </div>
-          <form class="visitor-form" id="visitorForm">
-            <input name="visitorName" placeholder="Your name" autocomplete="name" required>
-            <input name="visitorEmail" type="email" placeholder="Your email address" autocomplete="email" required>
-            <input name="visitorOrg" placeholder="Company / organisation (optional)">
-            <select name="visitorReason" required><option value="">Reason for visiting</option><option>Recruitment / job opportunity</option><option>Professional networking</option><option>Project or technical discussion</option><option>Learning / collaboration</option><option>Other</option></select>
-            <textarea name="visitorMessage" rows="3" placeholder="Your message or preferred way to connect" required></textarea>
-            <button class="btn primary" type="submit">Request a call back / contact ↗</button>
+          <form class="visitor-form" id="visitorForm" action="https://formsubmit.co/saikumardevuni001@gmail.com" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="_subject" value="New portfolio contact / callback request">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_next" value="https://saikumardevuni001-hub.github.io/?contact=success#visitor-contact">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
+            <input name="Name" placeholder="Your name" autocomplete="name" required>
+            <input name="email" type="email" placeholder="Your email address" autocomplete="email" required>
+            <input name="Organisation" placeholder="Company / organisation (optional)">
+            <select name="Reason" required><option value="">Reason for visiting</option><option>Recruitment / job opportunity</option><option>Professional networking</option><option>Project or technical discussion</option><option>Learning / collaboration</option><option>Other</option></select>
+            <textarea name="Message" rows="3" placeholder="Your message or preferred way to connect" required></textarea>
+            <button class="btn primary" type="submit">Submit message ↗</button>
+            <p class="small">Your email address is used only to reply to your enquiry. Do not submit passwords, OTPs or sensitive personal information.</p>
           </form>
         </div>
       </div>
     </section>
-\n    <section id="contact">
+
+    <section id="contact">
       <div class="wrap">
         <div class="section-head"><div class="kicker">Contact</div><h2>Let's connect</h2><p class="sub">Open to suitable opportunities in Cloud Security, Cybersecurity, IAM, Network Security and Security Operations.</p></div>
         <div class="contact">
@@ -528,7 +559,12 @@
     <button class="viewer-close" id="viewerClose" type="button" aria-label="Close image preview">×</button>
     <img id="viewerImage" alt="Expanded portfolio image">
   </div>
-\n  <footer><div class="wrap">© <span id="year"></span> Sai Kumar Devuni. Built with HTML, CSS and JavaScript.
+  <div class="resume-viewer" id="resumeViewer" role="dialog" aria-modal="true" aria-label="Resume preview">
+    <button class="viewer-close" id="resumeClose" type="button" aria-label="Close resume preview">×</button>
+    <iframe title="Sai Kumar Devuni resume" src="assets/Sai-Kumar-Devuni-Resume.pdf#toolbar=0&navpanes=0&scrollbar=1"></iframe>
+  </div>
+
+  <footer><div class="wrap">© <span id="year"></span> Sai Kumar Devuni. Built with HTML, CSS and JavaScript.
     <details style="margin-top:14px"><summary style="cursor:pointer;color:var(--muted)">Private owner rating (saved only in this browser)</summary>
       <p class="small">This is a personal review reminder, not a public visitor-rating system. The score is stored locally in this browser and is not sent to the website owner or any server.</p>
       <div class="rating-stars" id="ownerRating" aria-label="Rate this portfolio privately">
@@ -537,6 +573,10 @@
     </details></div></footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    if (new URLSearchParams(window.location.search).get('contact') === 'success') {
+      const banner = document.querySelector('#visitor-contact .visitor-banner');
+      if (banner) { const notice = document.createElement('p'); notice.className = 'form-success'; notice.setAttribute('role','status'); notice.textContent = 'Thank you. Your message has been submitted.'; banner.prepend(notice); }
+    }
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => {
@@ -621,7 +661,12 @@
     });
     document.getElementById('viewerClose').addEventListener('click', closeViewer);
     imageViewer.addEventListener('click', event => { if (event.target === imageViewer) closeViewer(); });
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeViewer(); });
+    const resumeViewer = document.getElementById('resumeViewer');
+    document.getElementById('openResume').addEventListener('click', () => { resumeViewer.classList.add('open'); document.body.style.overflow='hidden'; });
+    function closeResume() { resumeViewer.classList.remove('open'); document.body.style.overflow=''; }
+    document.getElementById('resumeClose').addEventListener('click', closeResume);
+    resumeViewer.addEventListener('click', event => { if (event.target === resumeViewer) closeResume(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeViewer(); closeResume(); } });
 
     // Each syllabus module receives a purpose-built visual card illustration.
     const moduleVisuals = [
@@ -665,17 +710,6 @@
         slide.insertBefore(visual, slide.firstChild);
       });
     }
-
-    // Visitor follow-up is voluntary and uses the visitor's own email client.
-    document.getElementById('visitorForm')?.addEventListener('submit', event => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      const subject = encodeURIComponent('Portfolio contact request — ' + data.get('visitorName'));
-      const body = encodeURIComponent(
-        `Name: ${data.get('visitorName')}\nEmail: ${data.get('visitorEmail')}\nOrganisation: ${data.get('visitorOrg') || 'Not provided'}\nReason: ${data.get('visitorReason')}\n\nMessage:\n${data.get('visitorMessage')}`
-      );
-      window.location.href = `mailto:saikumardevuni001@gmail.com?subject=${subject}&body=${body}`;
-    });
 
     // Private portfolio self-rating: stored only in this browser's local storage.
     const ownerRating = document.getElementById('ownerRating');
