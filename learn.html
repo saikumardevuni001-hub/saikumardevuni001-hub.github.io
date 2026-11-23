@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#0a0f1a">
+  <title>Learning Roadmap &amp; Stay Safe Online | Sai Kumar Devuni</title>
+  <meta name="description" content="A free 16-module self-study roadmap for cybersecurity and cloud security, plus a plain-language guide to common online scams and how to avoid them.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cybersecurity &amp; Cloud Security Learning Roadmap">
+  <meta property="og:description" content="Free self-study roadmap and an online safety guide, by Sai Kumar Devuni.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Sai Kumar Devuni, home">SAI<span>.</span></a>
+      <nav class="links" aria-label="Main navigation">
+        <a href="index.html">Portfolio</a>
+        <a href="learn.html" aria-current="page">Learning roadmap</a>
+        <a href="#modules">Modules</a>
+        <a href="#stay-safe">Stay safe</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap page-head">
+      <div class="kicker">Free resource</div>
+      <h1>Cybersecurity &amp; cloud security learning roadmap</h1>
+      <p class="lead">A structured path from first principles to cloud security, for students, career changers and anyone who wants to protect their own accounts and devices.</p>
+      <p class="disclaimer"><strong>What this is:</strong> a roadmap of topics, practice tasks and trusted free resources. It is not a video course. Practise only on systems you own or have written permission to test. External platforms may offer optional paid features.</p>
+    </div>
+
+    <section id="modules">
+      <div class="wrap">
+        <div class="head">
+          <div class="kicker">Syllabus</div>
+          <h2>16 modules</h2>
+          <p class="sub">Work through them in order. Open a module to see what to learn and a practice task to complete before moving on.</p>
+        </div>
+        <div class="modules">
+          <details class="module"><summary>1. Cybersecurity fundamentals</summary><div class="module-body"><ul><li>Confidentiality, integrity and availability (CIA).</li><li>Assets, threats, vulnerabilities, likelihood, impact and risk.</li><li>Preventive, detective and corrective controls; defence in depth.</li><li>Policies, data classification and basic threat modelling.</li></ul><p class="practice"><b>Practice:</b> list five everyday assets, name a threat and vulnerability for each, then suggest one preventive and one detective control.</p></div></details>
+          <details class="module"><summary>2. Networking foundations</summary><div class="module-body"><ul><li>OSI and TCP/IP models, IP addressing, subnetting concepts and routing.</li><li>TCP vs UDP, ports, DNS, DHCP, ARP, ICMP, HTTP and HTTPS.</li><li>Switches, routers, VLANs, NAT, firewalls, proxies and VPNs.</li><li>TLS, secure Wi-Fi, segmentation and zero trust basics.</li></ul><p class="practice"><b>Practice:</b> draw a small office network with a router, switch, firewall and two VLANs, and label the path of one web request.</p></div></details>
+          <details class="module"><summary>3. Operating systems and endpoint security</summary><div class="module-body"><ul><li>Windows and Linux users, groups, permissions and services.</li><li>Patching, secure configuration, host firewalls and endpoint protection.</li><li>Windows Event Logs, Sysmon basics and Linux audit logs.</li><li>Disk encryption, backups and safe virtual-machine labs.</li></ul><p class="practice"><b>Practice:</b> on your own computer or a VM, record update status, firewall status and one useful log location.</p></div></details>
+          <details class="module"><summary>4. Identity and access management</summary><div class="module-body"><ul><li>Authentication vs authorisation; passwords, password managers, MFA and passkeys.</li><li>Least privilege, RBAC, privileged access and access reviews.</li><li>Active Directory and Group Policy basics.</li><li>SSO, SAML, OAuth 2.0 and OpenID Connect.</li></ul><p class="practice"><b>Practice:</b> build a role-to-permission matrix for three job roles and mark where MFA and access reviews apply.</p></div></details>
+          <details class="module"><summary>5. Cryptography and data protection</summary><div class="module-body"><ul><li>Encoding vs encryption vs hashing; symmetric and asymmetric encryption.</li><li>Salting, digital signatures, certificates and PKI.</li><li>Data at rest, in transit and in use; TLS.</li><li>Key rotation, secrets management and common implementation mistakes.</li></ul><p class="practice"><b>Practice:</b> compare a password hash, an encrypted file and a signed document, and state what each does and does not provide.</p></div></details>
+          <details class="module"><summary>6. Vulnerability management</summary><div class="module-body"><ul><li>Asset discovery, scanning and authenticated assessment.</li><li>CVE and CVSS, false positives, prioritisation and remediation tracking.</li><li>Scope, written authorisation and rules of engagement.</li><li>Report writing: evidence, impact, severity and fix.</li></ul><p class="practice"><b>Practice:</b> using a sample report or lab, rank three findings by exposure and impact and write one clear remediation.</p></div></details>
+          <details class="module"><summary>7. Web and application security</summary><div class="module-body"><ul><li>How browsers, servers, APIs, cookies, sessions and databases interact.</li><li>OWASP Top 10: broken access control, injection, cryptographic failures, misconfiguration.</li><li>Input validation, output encoding and secure session handling.</li><li>Secure SDLC, code review and dependency checks.</li></ul><p class="practice"><b>Practice:</b> in an authorised training lab, inspect one request and identify where validation or access control is needed.</p></div></details>
+          <details class="module"><summary>8. Security operations and SIEM</summary><div class="module-body"><ul><li>Log sources, timestamps, normalisation and retention.</li><li>SIEM alert rules, dashboards, correlation and triage.</li><li>Indicators of compromise and threat intelligence basics.</li><li>Incident lifecycle: prepare, identify, contain, eradicate, recover, learn.</li></ul><p class="practice"><b>Practice:</b> review sample authentication logs, identify user, source, time and pattern, then write a short incident note.</p></div></details>
+          <details class="module"><summary>9. Threats, malware and defence</summary><div class="module-body"><ul><li>Trojans, worms, ransomware, spyware and botnets.</li><li>Phishing, credential theft, brute force and denial of service.</li><li>Endpoint, email, DNS and network controls; MITRE ATT&amp;CK.</li><li>Backups, recovery testing, business continuity and disaster recovery.</li></ul><p class="practice"><b>Practice:</b> analyse a sample phishing email, list its warning signs and write a defence checklist.</p></div></details>
+          <details class="module"><summary>10. Cloud computing foundations</summary><div class="module-body"><ul><li>IaaS, PaaS, SaaS; public, private and hybrid models.</li><li>Regions, availability zones and the shared responsibility model.</li><li>Virtual networks, subnets, routing and security groups.</li><li>Compute, object storage, databases, serverless and containers.</li></ul><p class="practice"><b>Practice:</b> map a simple web app to cloud compute, network, storage and database, and mark provider vs customer security tasks.</p></div></details>
+          <details class="module"><summary>11. AWS security fundamentals</summary><div class="module-body"><ul><li>IAM users, groups, roles, policies, MFA and least privilege.</li><li>VPC, subnets, route tables, security groups and NACLs.</li><li>EC2 hardening; S3 Block Public Access, bucket policies and encryption.</li><li>CloudTrail, CloudWatch, Config, GuardDuty and KMS concepts.</li></ul><p class="practice"><b>Practice:</b> in a sandbox account, set up MFA, a least-privilege role, a private S3 bucket and audit logging.</p></div></details>
+          <details class="module"><summary>12. Microsoft Azure security fundamentals</summary><div class="module-body"><ul><li>Subscriptions, resource groups and Azure Resource Manager.</li><li>Microsoft Entra ID, RBAC, MFA and Conditional Access.</li><li>VNets, NSGs, Azure Firewall and private endpoints.</li><li>Key Vault, Defender for Cloud, Azure Monitor and Azure Policy.</li></ul><p class="practice"><b>Practice:</b> sketch a secure Azure setup with an Entra ID admin, RBAC, a private subnet, an NSG and Key Vault.</p></div></details>
+          <details class="module"><summary>13. Cloud security architecture</summary><div class="module-body"><ul><li>Zero trust, identity-first security and secure landing zones.</li><li>Segmentation, private connectivity and controlled egress.</li><li>Encryption, key ownership and certificate lifecycle.</li><li>Central logging, posture management, resilience and isolated backups.</li></ul><p class="practice"><b>Practice:</b> draw a cloud architecture showing identity boundaries, private workloads, central logs and backup isolation.</p></div></details>
+          <details class="module"><summary>14. Governance, risk and compliance</summary><div class="module-body"><ul><li>Policies, standards, procedures and control objectives.</li><li>NIST CSF, ISO/IEC 27001 and CIS Controls overview.</li><li>Risk registers, audits, evidence and vendor risk.</li><li>Privacy, data retention, breach notification and continuity planning.</li></ul><p class="practice"><b>Practice:</b> create a mini risk register with three risks, likelihood, impact, owner, treatment and review date.</p></div></details>
+          <details class="module"><summary>15. Practical labs and portfolio projects</summary><div class="module-body"><ul><li>Build a home lab with VMs and intentionally vulnerable training targets.</li><li>Practise packet analysis with Wireshark on sample traffic.</li><li>Review sample logs and write a basic incident report.</li><li>Document scope, steps, findings and fixes, with no secrets in screenshots.</li></ul><p class="practice"><b>Practice:</b> complete one small authorised lab and publish a concise write-up on GitHub.</p></div></details>
+          <details class="module"><summary>16. Career readiness and continuous learning</summary><div class="module-body"><ul><li>Build a focused portfolio with clear project write-ups.</li><li>Practise explaining a security issue, its business impact and the fix.</li><li>Learn ticket handling, documentation and escalation.</li><li>Stay current through vendor advisories and official documentation.</li></ul><p class="practice"><b>Practice:</b> prepare a one-page case study: problem, investigation, evidence, action, result, lesson.</p></div></details>
+        </div>
+
+        <div class="card" id="resources">
+          <h3>Free learning resources</h3>
+          <p class="small">Official portals with free content or free tiers. Check each platform's terms before enrolling; some certificates or labs are paid.</p>
+          <ul class="resource-links">
+            <li><a href="https://skillsforall.com/" target="_blank" rel="noopener">Cisco Skills for All ↗</a></li>
+            <li><a href="https://learn.microsoft.com/training/" target="_blank" rel="noopener">Microsoft Learn ↗</a></li>
+            <li><a href="https://skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder ↗</a></li>
+            <li><a href="https://cloud.google.com/learn/training" target="_blank" rel="noopener">Google Cloud Training ↗</a></li>
+            <li><a href="https://www.cisa.gov/secure-our-world" target="_blank" rel="noopener">CISA Secure Our World ↗</a></li>
+            <li><a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger Web Security Academy ↗</a></li>
+            <li><a href="https://tryhackme.com/" target="_blank" rel="noopener">TryHackMe ↗</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="stay-safe">
+      <div class="wrap">
+        <div class="head">
+          <div class="kicker">Public awareness</div>
+          <h2>Stay safe: how attackers trick people</h2>
+          <p class="sub">Most attacks rely on urgency, trust, fear or curiosity, not advanced technology. Pause, then verify through a separate trusted channel.</p>
+        </div>
+        <div class="safety">
+          <article class="card"><h3>Phishing emails and fake links</h3><p>Messages imitate banks, couriers, employers or government. Check the full sender address and the real domain. Open the official site or app yourself instead of clicking.</p></article>
+          <article class="card"><h3>Smishing and messaging scams</h3><p>SMS, WhatsApp and Telegram messages claim a parcel is held or an account will be blocked. Don't use the link or number in the message; verify independently.</p></article>
+          <article class="card"><h3>Vishing and impersonation calls</h3><p>Callers pose as bank staff, police, tech support or your boss. Never share passwords, PINs, CVVs or OTPs. Hang up and call a number you trust.</p></article>
+          <article class="card"><h3>Social engineering and urgency</h3><p>"Act now", "keep this secret" and "you'll lose access" are pressure tactics. Slow down and confirm unusual requests with the person through another channel.</p></article>
+          <article class="card"><h3>OTP and MFA fatigue</h3><p>Never share an OTP or approve a sign-in you didn't start. Repeated prompts can be an attack. Deny them, change your password from the official site and report it.</p></article>
+          <article class="card"><h3>Password reuse</h3><p>One breached site exposes every account sharing that password. Use a unique password per service, a reputable password manager, and MFA or passkeys.</p></article>
+          <article class="card"><h3>Malicious attachments and downloads</h3><p>Unexpected invoices, job offers, APK files, cracked software and macro-enabled documents can carry malware. Install only from official sources.</p></article>
+          <article class="card"><h3>QR-code scams</h3><p>A QR code can hide a fake site or payment destination. Preview the address, check the domain, and don't enter credentials because a QR code asked.</p></article>
+          <article class="card"><h3>Fake websites, apps and pop-ups</h3><p>Lookalike domains and alarming pop-ups push you to pay or give remote access. Use official app stores and never allow remote control to an unsolicited caller.</p></article>
+          <article class="card"><h3>Public Wi-Fi and rogue hotspots</h3><p>Fake hotspots copy real network names. Confirm the name with the venue, avoid banking on unknown networks, and turn off auto-join.</p></article>
+          <article class="card"><h3>SIM-swap</h3><p>A criminal moves your number to their SIM to intercept calls and SMS. Set a carrier PIN or port-out lock, and contact your carrier at once if service suddenly stops.</p></article>
+          <article class="card"><h3>Deepfake voice and video</h3><p>AI can imitate relatives, managers or public figures. Verify urgent money requests on a known number, and agree a verification phrase with family or your team.</p></article>
+          <article class="card"><h3>Payment and email-compromise fraud</h3><p>Attackers impersonate suppliers or managers and ask for new bank details. Confirm changes through a previously verified contact and use dual approval.</p></article>
+          <article class="card"><h3>USB baiting</h3><p>A found USB drive or unknown charger may be malicious. Don't plug it in; hand it to IT or security.</p></article>
+          <article class="card"><h3>Ransomware and extortion</h3><p>Malware encrypts or steals files and demands payment. Keep protected or offline backups, patch systems, and report suspected ransomware immediately.</p></article>
+          <article class="card"><h3>Cloud and data exposure</h3><p>Public storage, excessive permissions, leaked API keys and open backups expose data. Use least privilege, private-by-default storage, MFA, secrets management and audit logs.</p></article>
+        </div>
+
+        <div class="card" id="stop">
+          <h3>Before you click, pay, share or approve: STOP</h3>
+          <ol class="steps">
+            <li><div><strong>Stop.</strong> Don't react to urgency, threats or unexpected rewards.</div></li>
+            <li><div><strong>Think.</strong> Was this expected? Is it asking for money, credentials, an OTP or remote access?</div></li>
+            <li><div><strong>Verify.</strong> Use a trusted number, saved contact or official app, not the details in the message.</div></li>
+            <li><div><strong>Protect and report.</strong> Block the sender, keep evidence, and tell your bank, provider or IT/security team.</div></li>
+          </ol>
+        </div>
+
+        <div class="card" id="if-clicked">
+          <h3>If you clicked a suspicious link or shared information</h3>
+          <ul>
+            <li>Stop interacting. Don't enter more information or approve prompts.</li>
+            <li>From a trusted device, change the affected password and any reused ones; sign out other sessions.</li>
+            <li>Contact your bank immediately if card, UPI or banking details may be exposed.</li>
+            <li>If you opened a file or installed software, run a security scan and tell your IT/security team.</li>
+            <li>Keep the message, sender details, transaction references and screenshots as evidence. Don't forward malicious links.</li>
+            <li>In India, report cyber financial fraud on the helpline <strong>1930</strong> and at <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener">cybercrime.gov.in ↗</a>.</li>
+          </ul>
+        </div>
+        <p class="small">General awareness education only, not legal, financial or incident-response advice. For workplace incidents, follow your organisation's policy and contact its IT/security team.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© <span id="year">2026</span> Sai Kumar Devuni</span>
+      <nav aria-label="Footer">
+        <a href="index.html">Portfolio</a>
+        <a href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/saikumardevuni001-hub" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
