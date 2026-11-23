@@ -527,15 +527,15 @@
           <form class="visitor-form" id="visitorForm" action="https://formsubmit.co/saikumardevuni001@gmail.com" method="POST" accept-charset="UTF-8">
             <input type="hidden" name="_subject" value="New portfolio contact / callback request">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_next" value="https://saikumardevuni001-hub.github.io/?contact=success#visitor-contact">
+            <input type="hidden" name="_captcha" value="false">
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
             <input name="Name" placeholder="Your name" autocomplete="name" required>
             <input name="email" type="email" placeholder="Your email address" autocomplete="email" required>
             <input name="Organisation" placeholder="Company / organisation (optional)">
             <select name="Reason" required><option value="">Reason for visiting</option><option>Recruitment / job opportunity</option><option>Professional networking</option><option>Project or technical discussion</option><option>Learning / collaboration</option><option>Other</option></select>
             <textarea name="Message" rows="3" placeholder="Your message or preferred way to connect" required></textarea>
-            <button class="btn primary" type="submit">Submit message ↗</button>
+            <button class="btn primary" id="visitorSubmit" type="submit">Send email ↗</button>
+            <p class="small" id="visitorSubmitStatus" role="status" aria-live="polite">Your details will be emailed directly to saikumardevuni001@gmail.com. Your Gmail or email app will not open.</p>
             <p class="small">Your email address is used only to reply to your enquiry. Do not submit passwords, OTPs or sensitive personal information.</p>
           </form>
         </div>
@@ -573,6 +573,35 @@
     </details></div></footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const visitorForm = document.getElementById('visitorForm');
+    if (visitorForm) {
+      visitorForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const submitButton = document.getElementById('visitorSubmit');
+        const status = document.getElementById('visitorSubmitStatus');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending email…';
+        status.textContent = 'Sending your details securely. Please wait…';
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/saikumardevuni001@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(visitorForm)))
+          });
+          const result = await response.json();
+          if (!response.ok || result.success !== 'true' && result.success !== true) {
+            throw new Error(result.message || 'The email could not be sent. Please try again.');
+          }
+          visitorForm.reset();
+          status.textContent = 'Email sent successfully. Thank you for contacting me.';
+          submitButton.textContent = 'Email sent ✓';
+        } catch (error) {
+          status.textContent = error.message || 'Unable to send right now. Please try again later.';
+          submitButton.textContent = 'Send email ↗';
+          submitButton.disabled = false;
+        }
+      });
+    }
     if (new URLSearchParams(window.location.search).get('contact') === 'success') {
       const banner = document.querySelector('#visitor-contact .visitor-banner');
       if (banner) { const notice = document.createElement('p'); notice.className = 'form-success'; notice.setAttribute('role','status'); notice.textContent = 'Thank you. Your message has been submitted.'; banner.prepend(notice); }
