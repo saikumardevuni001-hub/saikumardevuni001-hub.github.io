@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-src 'self'; base-uri 'none'; connect-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#0a0f1a">
+  <meta name="theme-color" content="#080d18">
   <title>Sai Kumar Devuni | Cybersecurity &amp; Cloud Security</title>
   <meta name="description" content="Sai Kumar Devuni: CEH-certified cybersecurity professional in Hyderabad, India. Vulnerability assessment, network security, IAM and cloud security fundamentals.">
   <meta property="og:type" content="website">
@@ -21,15 +21,25 @@
     "name": "Sai Kumar Devuni",
     "jobTitle": "Cybersecurity Professional",
     "address": { "@type": "PostalAddress", "addressLocality": "Hyderabad", "addressRegion": "Telangana", "addressCountry": "IN" },
-    "sameAs": [
-      "https://www.linkedin.com/in/saikumardevuni001/",
-      "https://github.com/saikumardevuni001-hub"
-    ]
+    "sameAs": ["https://www.linkedin.com/in/saikumardevuni001/", "https://github.com/saikumardevuni001-hub"]
   }
   </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true">
+    <div class="scene s-home on" data-s="home"></div>
+    <div class="scene s-about" data-s="about"></div>
+    <div class="scene s-skills" data-s="skills"></div>
+    <div class="scene s-experience" data-s="experience"></div>
+    <div class="scene s-projects" data-s="projects"></div>
+    <div class="scene s-credentials" data-s="credentials"></div>
+    <div class="scene s-learn" data-s="learn"></div>
+    <div class="scene s-contact" data-s="contact"></div>
+    <div class="bg-grid"></div>
+    <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  </div>
 
   <header class="nav">
     <div class="wrap nav-inner">
@@ -40,6 +50,7 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#credentials">Credentials</a>
+        <a href="#resume">Resume</a>
         <a href="learn.html">Learning roadmap</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -47,98 +58,96 @@
   </header>
 
   <main id="main">
-    <div class="wrap hero" id="top">
-      <div>
-        <div class="eyebrow">Cybersecurity · Cloud Security</div>
-        <h1>Sai Kumar Devuni.<br><span class="gradient">I find weaknesses before attackers do.</span></h1>
-        <p class="lead">CEH-certified cybersecurity professional. I have run vulnerability assessments across 50+ hosts and now keep client-site infrastructure running as an L1 System &amp; Network Engineer. I am building toward Cloud Security Engineering, with IAM and AWS/Azure security as my focus.</p>
-        <div class="actions">
-          <a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" target="_blank" rel="noopener">View / download resume</a>
-          <a class="btn" href="#contact">Get in touch</a>
+    <div class="hero-wrap" id="top" data-scene="home">
+      <canvas id="net" aria-hidden="true"></canvas>
+      <div class="wrap hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot"></span> Cybersecurity · Cloud Security</div>
+          <h1>Hi, I'm Sai Kumar.<br><span class="gradient">Securing the digital world.</span></h1>
+          <p class="lead">CEH-certified cybersecurity professional. I have run vulnerability assessments across 50+ hosts and now keep client-site infrastructure running as an L1 System &amp; Network Engineer. I am building toward Cloud Security Engineering, with IAM and AWS/Azure security as my focus.</p>
+          <div class="actions">
+            <a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" data-resume="assets/Sai-Kumar-Devuni-Resume.pdf#page=1&amp;zoom=page-fit" target="_blank" rel="noopener">View resume ↗</a>
+            <a class="btn" href="#contact">Get in touch ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn" href="https://github.com/saikumardevuni001-hub" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
         </div>
-        <div class="hero-links">
-          <a href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://github.com/saikumardevuni001-hub" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
+        <aside class="profile" aria-label="Profile summary">
+          <div class="avatar-wrap">
+            <button class="photo-btn" type="button" data-full="assets/sai-kumar-devuni.jpg" data-alt="Portrait of Sai Kumar Devuni" aria-label="View larger portrait">
+              <img class="avatar" src="assets/sai-kumar-devuni.jpg" alt="Portrait of Sai Kumar Devuni" width="112" height="112">
+            </button>
+          </div>
+          <h2>Sai Kumar Devuni</h2>
+          <p>Cybersecurity &amp; Cloud Security</p>
+          <ul class="meta">
+            <li><span class="ic">⌖</span><span><b>Based in</b> Hyderabad, Telangana, India</span></li>
+            <li><span class="ic">✉</span><a data-email data-show href="#contact">Email me</a></li>
+            <li><span class="ic">✦</span><span><b>Certification</b> CEH, March 2026</span></li>
+            <li><span class="ic">◈</span><span><b>Current role</b> L1 System &amp; Network Engineer</span></li>
+          </ul>
+        </aside>
       </div>
-      <aside class="profile" aria-label="Profile summary">
-        <button class="photo-btn" type="button" data-full="assets/sai-kumar-devuni.jpg" data-alt="Portrait of Sai Kumar Devuni" aria-label="View larger portrait">
-          <img class="avatar" src="assets/sai-kumar-devuni.jpg" alt="Portrait of Sai Kumar Devuni" width="112" height="112">
-        </button>
-        <h2>Sai Kumar Devuni</h2>
-        <p>Cybersecurity &amp; Cloud Security</p>
-        <ul class="meta">
-          <li><b>Based in</b> Hyderabad, Telangana, India</li>
-          <li><b>Certification</b> CEH (EC-Council), March 2026</li>
-          <li><b>Degree</b> MSc, Cloud &amp; Cyber Security</li>
-          <li><b>Current role</b> L1 System &amp; Network Engineer</li>
-        </ul>
-      </aside>
     </div>
 
-    <section id="about">
+    <section class="promo" aria-label="Highlights">
+      <div class="wrap grid-3">
+        <a class="card c1" href="learn.html"><div class="icon">01</div><h3>Free Learning Roadmap</h3><p>A 16-module path from cybersecurity basics to AWS and Azure security, with practice tasks, key terms and trusted free resources.</p><span class="small">Open the roadmap →</span></a>
+        <a class="card c2" href="learn.html#stay-safe"><div class="icon">02</div><h3>Stay Safe: Hacker Tactics</h3><p>Learn to spot phishing, fake links, social engineering, scams, account theft, malware and cloud security mistakes.</p><span class="small">Read the safety guide →</span></a>
+        <a class="card c3" href="#projects"><div class="icon">03</div><h3>Explore My Work</h3><p>Six documented Spinnaker Analytics projects and two academic cloud security projects.</p><span class="small">See the projects ↓</span></a>
+      </div>
+    </section>
+
+    <section id="about" data-scene="about">
       <div class="wrap">
         <div class="head">
-          <div class="kicker">About</div>
-          <h2>Security-minded, infrastructure-aware</h2>
+          <div class="kicker">About me</div>
+          <h2>Security-minded. Infrastructure-aware.</h2>
+          <p class="sub">I bring together cybersecurity assessment work and hands-on IT operations, with a clear focus on building deeper cloud security skills.</p>
         </div>
         <div class="about">
           <div class="card">
             <p>I hold an MSc in Cloud &amp; Cyber Security and the Certified Ethical Hacker (CEH) credential. At Spinnaker Analytics I did vulnerability assessment, web application testing and IAM/MFA work. At Cycops Business Solutions I support client-site IT operations: Active Directory user administration, Sophos Firewall administration, LAN troubleshooting, backups and ticket handling.</p>
-            <p>That mix of assessing security and running real infrastructure is what I want to carry into cloud security: identity and access management, secure configuration, and monitoring. I care about clear documentation and practical fixes over long reports nobody reads.</p>
+            <p>I am actively building skills in cloud security, identity and access management, security monitoring and infrastructure protection. I value practical problem-solving, clear documentation and continuous learning.</p>
           </div>
           <div class="stats">
-            <div class="stat"><strong>50+</strong><span>Hosts assessed</span></div>
-            <div class="stat"><strong>40+</strong><span>Vulnerabilities documented</span></div>
-            <div class="stat"><strong>CEH</strong><span>EC-Council, 2026</span></div>
+            <div class="stat"><strong data-count="50" data-suffix="+">50+</strong><span>Hosts assessed</span></div>
+            <div class="stat"><strong data-count="40" data-suffix="+">40+</strong><span>Vulnerabilities documented</span></div>
+            <div class="stat"><strong>CEH</strong><span>Certified Ethical Hacker</span></div>
             <div class="stat"><strong>MSc</strong><span>Cloud &amp; Cyber Security</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skills">
+    <section id="skills" data-scene="skills">
       <div class="wrap">
         <div class="head">
-          <div class="kicker">Toolkit</div>
-          <h2>Skills</h2>
-          <p class="sub">Tools and areas I can discuss in detail. Practical depth varies; cloud skills are at the fundamentals-to-working level.</p>
+          <div class="kicker">Technical toolkit</div>
+          <h2>Skills &amp; areas of focus</h2>
+          <p class="sub">Technologies and domains I have studied or worked with. Practical depth varies by tool and project; cloud skills are at the fundamentals-to-working level.</p>
         </div>
         <div class="grid-3">
-          <article class="card skill-card">
-            <h3>Security assessment</h3>
-            <ul class="tags"><li class="tag">Nmap</li><li class="tag">Nessus</li><li class="tag">Burp Suite</li><li class="tag">Metasploit</li><li class="tag">Wireshark</li><li class="tag">Kali Linux</li></ul>
-          </article>
-          <article class="card skill-card">
-            <h3>Cloud &amp; identity</h3>
-            <ul class="tags"><li class="tag">AWS: IAM, EC2, S3, VPC</li><li class="tag">Azure fundamentals</li><li class="tag">IAM</li><li class="tag">MFA</li><li class="tag">Active Directory</li></ul>
-          </article>
-          <article class="card skill-card">
-            <h3>Networking</h3>
-            <ul class="tags"><li class="tag">TCP/IP</li><li class="tag">DNS</li><li class="tag">DHCP</li><li class="tag">VPN</li><li class="tag">Firewalls</li><li class="tag">Sophos Firewall</li></ul>
-          </article>
+          <article class="card"><div class="icon">01</div><h3>Cloud &amp; Identity</h3><p>AWS IAM, VPC, EC2 and S3 fundamentals; Azure fundamentals; Active Directory; MFA and least-privilege access.</p></article>
+          <article class="card"><div class="icon">02</div><h3>Network Security</h3><p>TCP/IP, DNS, DHCP, VPN, firewalls, NAT, VLANs, network troubleshooting and Sophos Firewall administration.</p></article>
           <!-- VERIFY before publishing: keep Splunk / ELK only if you can walk through a real search or dashboard you built. -->
-          <article class="card skill-card">
-            <h3>Monitoring &amp; response</h3>
-            <ul class="tags"><li class="tag">Splunk</li><li class="tag">ELK Stack</li><li class="tag">Log analysis</li><li class="tag">Incident response concepts</li></ul>
-          </article>
-          <article class="card skill-card">
-            <h3>Scripting &amp; systems</h3>
-            <ul class="tags"><li class="tag">Python</li><li class="tag">Bash</li><li class="tag">Linux (Kali, Ubuntu)</li><li class="tag">Windows</li></ul>
-          </article>
-          <article class="card skill-card">
-            <h3>Frameworks</h3>
-            <ul class="tags"><li class="tag">NIST CSF</li><li class="tag">ISO 27001</li><li class="tag">OWASP Top 10</li></ul>
-          </article>
+          <article class="card"><div class="icon">03</div><h3>Security Monitoring</h3><p>Splunk, ELK Stack, Windows Event Logs, log analysis and incident response concepts.</p></article>
+          <article class="card"><div class="icon">04</div><h3>Security Assessment</h3><p>Vulnerability assessment and web application testing with Nmap, Nessus and Burp Suite.</p></article>
+          <article class="card"><div class="icon">05</div><h3>Security Tools &amp; Scripting</h3><p>Wireshark, Metasploit, Kali Linux, plus Python and Bash for small automation tasks.</p></article>
+          <article class="card"><div class="icon">06</div><h3>IT Operations</h3><p>Windows troubleshooting, Active Directory user administration, hardware and software support, backups, asset tracking and ticket handling.</p></article>
         </div>
+        <ul class="tags row">
+          <li class="tag">AWS</li><li class="tag">Azure</li><li class="tag">Sophos Firewall</li><li class="tag">Splunk</li><li class="tag">ELK Stack</li><li class="tag">Nmap</li><li class="tag">Nessus</li><li class="tag">Wireshark</li><li class="tag">Burp Suite</li><li class="tag">Metasploit</li><li class="tag">Linux</li><li class="tag">Windows</li><li class="tag">Active Directory</li><li class="tag">Python</li><li class="tag">Bash</li><li class="tag">TCP/IP</li><li class="tag">SIEM</li><li class="tag">NIST CSF</li><li class="tag">ISO 27001</li><li class="tag">OWASP Top 10</li>
+        </ul>
       </div>
     </section>
 
-    <section id="experience">
+    <section id="experience" data-scene="experience">
       <div class="wrap">
         <div class="head">
-          <div class="kicker">Experience</div>
-          <h2>Where I've worked</h2>
+          <div class="kicker">Professional journey</div>
+          <h2>Experience</h2>
+          <p class="sub">Cybersecurity assessment work and client-site IT infrastructure operations.</p>
         </div>
         <div class="timeline">
           <article class="card role">
@@ -186,83 +195,87 @@
             <div>
               <h3>Cybersecurity Intern</h3>
               <div class="org">Infotact Solutions</div>
-              <ul>
-                <li>Completed a cybersecurity internship and training programme. Both certificates are in the credentials section below.</li>
-              </ul>
+              <ul><li>Completed a cybersecurity internship and training programme. Both certificates are in the credentials section below.</li></ul>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" data-scene="projects">
       <div class="wrap">
         <div class="head">
-          <div class="kicker">Projects</div>
-          <h2>Project work</h2>
+          <div class="kicker">Selected technical work</div>
+          <h2>Projects &amp; case studies</h2>
           <p class="sub">Six projects from my Spinnaker Analytics engagement, described as documented in my experience letter, plus two academic projects.</p>
         </div>
         <div class="grid-3">
-          <article class="card project"><div class="num">01</div><h3>Secure Firmware Update for IoT Devices</h3><p>Secure boot, code signing, pre- and post-installation firmware verification, encrypted device-to-server communication and controlled update scheduling.</p></article>
-          <article class="card project"><div class="num">02</div><h3>Mobile Banking App Security</h3><p>Assessed security gaps and strengthened encryption, authentication, authorisation, secure coding, API rate-limiting and input validation.</p></article>
-          <article class="card project"><div class="num">03</div><h3>Enterprise MFA System</h3><p>Strengthened enterprise authentication with OTP and biometric login workflows to protect organisational resources from unauthorised access.</p></article>
-          <article class="card project"><div class="num">04</div><h3>Automated Penetration Testing Framework</h3><p>Modular open-source framework for scanning, controlled exploitation, reporting, role-based tester permissions and audit logging.</p></article>
-          <article class="card project"><div class="num">05</div><h3>Secure Enterprise Network Architecture</h3><p>Security design for a multi-location enterprise: VPN segmentation, firewall rules and identity-driven controls to limit unauthorised access.</p></article>
-          <article class="card project"><div class="num">06</div><h3>Small Business Cybersecurity Framework</h3><p>Threat assessment, mapping open-source tools to established frameworks, and packet filtering to reduce DoS/DDoS exposure.</p></article>
-          <article class="card project"><div class="num">A1</div><h3>Cloud Computing &amp; Security Capstone</h3><p>Evaluated AWS infrastructure vulnerabilities and proposed IAM hardening and S3 bucket policy controls. <span class="small">Boston Institute of Analytics</span></p></article>
-          <article class="card project"><div class="num">A2</div><h3>Cloud Security in Enterprises</h3><p>Analysed breach case studies and developed a risk management framework aligned to NIST CSF. <span class="small">EC-Council University</span></p></article>
+          <article class="card"><div class="icon">01</div><h3>Secure Firmware Update for IoT Devices</h3><p>Secure boot, code signing, pre- and post-installation firmware verification, encrypted device-to-server communication and controlled update scheduling.</p></article>
+          <article class="card"><div class="icon">02</div><h3>Mobile Banking App Security</h3><p>Assessed security gaps and strengthened encryption, authentication, authorisation, secure coding, API rate-limiting and input validation.</p></article>
+          <article class="card"><div class="icon">03</div><h3>Enterprise MFA System</h3><p>Strengthened enterprise authentication with OTP and biometric login workflows to protect organisational resources from unauthorised access.</p></article>
+          <article class="card"><div class="icon">04</div><h3>Automated Penetration Testing Framework</h3><p>Modular open-source framework for scanning, controlled exploitation, reporting, role-based tester permissions and audit logging.</p></article>
+          <article class="card"><div class="icon">05</div><h3>Secure Enterprise Network Architecture</h3><p>Security design for a multi-location enterprise: VPN segmentation, firewall rules and identity-driven controls to limit unauthorised access.</p></article>
+          <article class="card"><div class="icon">06</div><h3>Small Business Cybersecurity Framework</h3><p>Threat assessment, mapping open-source tools to established frameworks, and packet filtering to reduce DoS/DDoS exposure.</p></article>
+          <article class="card"><div class="icon">A1</div><h3>Cloud Computing &amp; Security Capstone</h3><p>Evaluated AWS infrastructure vulnerabilities and proposed IAM hardening and S3 bucket policy controls.</p><p class="small">Boston Institute of Analytics</p></article>
+          <article class="card"><div class="icon">A2</div><h3>Cloud Security in Enterprises</h3><p>Analysed breach case studies and developed a risk management framework aligned to NIST CSF.</p><p class="small">EC-Council University</p></article>
         </div>
         <p class="note">Code, lab write-ups and sample reports live on my <a href="https://github.com/saikumardevuni001-hub" target="_blank" rel="noopener">GitHub profile ↗</a>. Client work is confidential, so published material uses lab environments only.</p>
       </div>
     </section>
 
-    <section id="credentials">
+    <section id="credentials" data-scene="credentials">
       <div class="wrap">
         <div class="head">
-          <div class="kicker">Credentials</div>
-          <h2>Education &amp; certifications</h2>
-          <p class="sub">Select a certificate image to view it full size. For formal verification, use the issuing organisation's official verification service where one exists.</p>
+          <div class="kicker">Education &amp; credentials</div>
+          <h2>Learning and certification</h2>
         </div>
-        <ul class="cred-list">
-          <li class="card"><strong>MSc, Cloud &amp; Cyber Security</strong><span>Scope Global Skills University · 2024–2026</span></li>
-          <li class="card"><strong>Bachelor of Computer Applications</strong><span>Rabindranath Tagore University · 2021–2024</span></li>
-          <li class="card"><strong>Certified Ethical Hacker (CEH)</strong><span>EC-Council · Passed March 2026</span></li>
-          <li class="card"><strong>The President's Award</strong><span>EC-Council University · December 2024</span></li>
+        <ul class="edu-grid">
+          <li class="card edu"><div class="mark">MSc</div><div><h3>MSc, Cloud &amp; Cyber Security</h3><p>Scope Global Skills University · 2024–2026</p></div></li>
+          <li class="card edu"><div class="mark">BCA</div><div><h3>Bachelor of Computer Applications</h3><p>Rabindranath Tagore University · 2021–2024</p></div></li>
+          <li class="card edu"><div class="mark">CEH</div><div><h3>Certified Ethical Hacker</h3><p>EC-Council · Passed March 2026</p></div></li>
+          <li class="card edu"><div class="mark">GC</div><div><h3>Google Cybersecurity Professional Certificate</h3><p>Coursera · Completed April 2025</p></div></li>
+          <li class="card edu"><div class="mark">BIA</div><div><h3>Master Diplomas: Cyber Security and Ethical Hacking</h3><p>Boston Institute of Analytics · October 2025</p></div></li>
+          <li class="card edu"><div class="mark">ECCU</div><div><h3>ECCU 501 coursework</h3><p>Ethical Hacking and Countermeasures · EC-Council University</p></div></li>
+          <li class="card edu"><div class="mark">CC</div><div><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy · September 2025</p></div></li>
+          <li class="card edu"><div class="mark">★</div><div><h3>The President's Award</h3><p>EC-Council University · December 2024</p></div></li>
         </ul>
+
+        <h3 class="subhead">Certificates &amp; awards</h3>
+        <p class="sub">Select any certificate to view it full size. For formal verification, use the issuing organisation's official verification service where one exists.</p>
         <ul class="gallery">
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/ec-council-certified-ethical-hacker.jpg" data-alt="EC-Council Certified Ethical Hacker certificate" aria-label="View Certified Ethical Hacker certificate full size"><img src="assets/ec-council-certified-ethical-hacker.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Certified Ethical Hacker (CEH)</h3><p>EC-Council · March 2026</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/google-cybersecurity-professional-certificate.jpg" data-alt="Google Cybersecurity Professional Certificate" aria-label="View Google Cybersecurity Professional Certificate full size"><img src="assets/google-cybersecurity-professional-certificate.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Google Cybersecurity Professional Certificate</h3><p>Google · Coursera · April 2025</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/bia-master-diploma-ethical-hacking.jpg" data-alt="Boston Institute of Analytics Master Diploma in Ethical Hacking" aria-label="View Master Diploma in Ethical Hacking full size"><img src="assets/bia-master-diploma-ethical-hacking.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Master Diploma, Ethical Hacking</h3><p>Boston Institute of Analytics · October 2025</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/bia-master-diploma-cyber-security.jpg" data-alt="Boston Institute of Analytics Master Diploma in Cyber Security" aria-label="View Master Diploma in Cyber Security full size"><img src="assets/bia-master-diploma-cyber-security.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Master Diploma, Cyber Security</h3><p>Boston Institute of Analytics · October 2025</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/ec-council-presidents-award.jpg" data-alt="EC-Council University President's Award certificate" aria-label="View President's Award certificate full size"><img src="assets/ec-council-presidents-award.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>The President's Award</h3><p>EC-Council University · December 2024</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/cisco-introduction-to-cybersecurity.jpg" data-alt="Cisco Networking Academy Introduction to Cybersecurity certificate" aria-label="View Cisco Introduction to Cybersecurity certificate full size"><img src="assets/cisco-introduction-to-cybersecurity.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy · September 2025</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/eccu-501-course-record.jpg" data-alt="EC-Council University ECCU 501 course record" aria-label="View ECCU 501 course record full size"><img src="assets/eccu-501-course-record.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>ECCU 501: Ethical Hacking and Countermeasures</h3><p>EC-Council University · Course record</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/infotact-certificate-internship.jpg" data-alt="Infotact Solutions cybersecurity internship certificate" aria-label="View internship certificate full size"><img src="assets/infotact-certificate-internship.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Cybersecurity Internship</h3><p>Infotact Solutions · Mar–Jun 2025</p></div>
           </li>
-          <li class="card cert">
+          <li class="card cert-card">
             <button class="cert-thumb" type="button" data-full="assets/infotact-certificate-training.jpg" data-alt="Infotact Solutions cybersecurity training certificate" aria-label="View training certificate full size"><img src="assets/infotact-certificate-training.jpg" alt="" loading="lazy" width="400" height="300"></button>
             <div class="cert-info"><h3>Cybersecurity Training</h3><p>Infotact Solutions · Mar–Jun 2025</p></div>
           </li>
@@ -270,25 +283,90 @@
       </div>
     </section>
 
-    <section id="learn">
+    <section id="resume" data-scene="credentials">
       <div class="wrap">
-        <div class="card">
-          <div class="kicker">Free resource</div>
-          <h2>Learning roadmap and online safety guide</h2>
-          <p>A free 16-module self-study roadmap from cybersecurity basics to AWS and Azure security, plus a plain-language guide to common scams and how to avoid them.</p>
-          <div class="actions"><a class="btn" href="learn.html">Open the roadmap</a><a class="btn" href="learn.html#stay-safe">Read the safety guide</a></div>
+        <div class="card resume-card">
+          <div>
+            <div class="kicker">Professional profile</div>
+            <h3>Sai Kumar Devuni: Resume</h3>
+            <p class="small">PDF. Opens as a preview on desktop and in a new tab on phones.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="assets/Sai-Kumar-Devuni-Resume.pdf" data-resume="assets/Sai-Kumar-Devuni-Resume.pdf#page=1&amp;zoom=page-fit" target="_blank" rel="noopener">View resume ↗</a>
+            <a class="btn" href="assets/Sai-Kumar-Devuni-Resume.pdf" download>Download PDF</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="learn" data-scene="learn">
+      <div class="wrap">
+        <div class="head">
+          <div class="kicker">Free resources</div>
+          <h2>Learn and stay safe</h2>
+          <p class="sub">Free, beginner-friendly material for students, job seekers and anyone who wants to protect their accounts, devices and cloud environments.</p>
+        </div>
+        <div class="grid-3">
+          <a class="card c1" href="learn.html#modules"><div class="icon">16</div><h3>16-module syllabus</h3><p>Fundamentals, networking, identity, cryptography, SIEM, AWS, Azure, governance and portfolio labs.</p><span class="small">Start learning →</span></a>
+          <a class="card c2" href="learn.html#stay-safe"><div class="icon">!</div><h3>Scam and attack guide</h3><p>Sixteen common tactics, the STOP checklist and what to do after clicking a bad link.</p><span class="small">Read the guide →</span></a>
+          <a class="card c3" href="learn.html#resources"><div class="icon">↗</div><h3>Free learning portals</h3><p>Cisco, Microsoft, AWS, Google Cloud, CISA, PortSwigger and TryHackMe.</p><span class="small">See the links →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" data-scene="contact">
       <div class="wrap">
         <div class="head">
           <div class="kicker">Contact</div>
           <h2>Let's connect</h2>
-          <p class="sub">Open to roles in cloud security, cybersecurity, IAM, network security and security operations. Email is the quickest way to reach me.</p>
+          <p class="sub">Open to roles in cloud security, cybersecurity, IAM, network security and security operations.</p>
         </div>
-        <div class="grid-3">
+        <div class="card visitor">
+          <div>
+            <div class="kicker">Visitor connection</div>
+            <h3>Thanks for visiting my portfolio</h3>
+            <p>If you are a recruiter, hiring manager, colleague, student or professional visitor, leave a short message and I will reply by email.</p>
+            <p class="small">Submitting sends your message through FormSubmit to my inbox. On the first submission FormSubmit shows a short human check, and I may need to confirm the form once before delivery starts. Your email address is used only to reply. Please do not send passwords, OTPs or sensitive personal information.</p>
+            <noscript><p class="small">This form needs JavaScript. You can also reach me on LinkedIn.</p></noscript>
+          </div>
+          <div>
+            <div class="notice" id="formNotice" role="status" hidden>Thank you. Your message has been submitted.</div>
+            <form class="form" id="visitorForm" method="POST" accept-charset="UTF-8">
+              <input type="hidden" name="_subject" value="New portfolio contact">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="hidden" name="_next" value="https://saikumardevuni001-hub.github.io/?contact=success#contact">
+              <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <label>Your name<input name="Name" autocomplete="name" required></label>
+              <label>Your email address<input name="email" type="email" autocomplete="email" required></label>
+              <label>Company / organisation (optional)<input name="Organisation"></label>
+              <label>Reason for visiting
+                <select name="Reason" required>
+                  <option value="">Select a reason</option>
+                  <option>Job opportunity / Recruitment</option>
+                  <option>Job application / Resume review</option>
+                  <option>Interview invitation</option>
+                  <option>Employee referral</option>
+                  <option>Internship opportunity</option>
+                  <option>Freelance work / Consulting</option>
+                  <option>Professional networking</option>
+                  <option>Career guidance / Mentorship</option>
+                  <option>Cloud Security discussion</option>
+                  <option>Cybersecurity / Ethical Hacking discussion</option>
+                  <option>Project collaboration</option>
+                  <option>Training / Workshop / Guest session</option>
+                  <option>Academic / Research discussion</option>
+                  <option>Portfolio / Project feedback</option>
+                  <option>General enquiry</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label>Message<textarea name="Message" rows="4" required></textarea></label>
+              <button class="btn primary" type="submit">Send message ↗</button>
+            </form>
+          </div>
+        </div>
+        <div class="grid-3 contact-row">
           <div class="card contact-card"><h3>Email</h3><p><a data-email data-show href="#contact">Email me</a></p></div>
           <div class="card contact-card"><h3>LinkedIn</h3><p><a href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">linkedin.com/in/saikumardevuni001 ↗</a></p></div>
           <div class="card contact-card"><h3>GitHub</h3><p><a href="https://github.com/saikumardevuni001-hub" target="_blank" rel="noopener">github.com/saikumardevuni001-hub ↗</a></p></div>
@@ -300,6 +378,10 @@
   <dialog id="lightbox" aria-label="Image preview">
     <button class="btn lb-close" type="button">Close</button>
     <img alt="">
+  </dialog>
+  <dialog id="resumeDialog" aria-label="Resume preview">
+    <div class="dlg-bar"><button class="btn lb-close" type="button">Close</button></div>
+    <iframe title="Sai Kumar Devuni resume"></iframe>
   </dialog>
 
   <footer>
