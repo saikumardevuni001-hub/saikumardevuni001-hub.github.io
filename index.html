@@ -243,7 +243,7 @@
         <h1>Hi, I'm Sai Kumar.<br><span class="gradient">Securing the digital world.</span></h1>
         <p class="lead">Cybersecurity professional with experience across security assessment and IT infrastructure operations. Focused on cybersecurity as my core discipline, with a career direction toward Cloud Security Engineering and Cloud Security Architecture.</p>
         <div class="actions">
-          <a class="btn primary" href="#resume">View Resume ↓</a>
+          <button class="btn primary" id="openResumeTop" type="button">View Resume ↗</button>
           <a class="btn" href="#contact">Get in touch ↗</a>
           <a class="btn" href="https://www.linkedin.com/in/saikumardevuni001/" target="_blank" rel="noopener">LinkedIn profile ↗</a>
           <a class="btn" href="#learn">Learn from me ↗</a>
@@ -664,12 +664,14 @@
     const resumeViewer = document.getElementById('resumeViewer');
     const resumeFrame = document.getElementById('resumeFrame');
     const resumePdfUrl = 'assets/Sai-Kumar-Devuni-Resume.pdf#page=1&zoom=page-fit&toolbar=0&navpanes=0&scrollbar=1';
-    document.getElementById('openResume').addEventListener('click', () => {
+    function openResumePreview() {
       // Reload the PDF at page 1 each time the viewer opens, rather than restoring its previous scroll position.
       resumeFrame.src = resumePdfUrl;
       resumeViewer.classList.add('open');
       document.body.style.overflow = 'hidden';
-    });
+    }
+    document.getElementById('openResume').addEventListener('click', openResumePreview);
+    document.getElementById('openResumeTop').addEventListener('click', openResumePreview);
     function closeResume() { resumeViewer.classList.remove('open'); document.body.style.overflow=''; }
     document.getElementById('resumeClose').addEventListener('click', closeResume);
     resumeViewer.addEventListener('click', event => { if (event.target === resumeViewer) closeResume(); });
