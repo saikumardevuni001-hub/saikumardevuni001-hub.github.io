@@ -561,7 +561,7 @@
   </div>
   <div class="resume-viewer" id="resumeViewer" role="dialog" aria-modal="true" aria-label="Resume preview">
     <button class="viewer-close" id="resumeClose" type="button" aria-label="Close resume preview">×</button>
-    <iframe title="Sai Kumar Devuni resume" src="assets/Sai-Kumar-Devuni-Resume.pdf#toolbar=0&navpanes=0&scrollbar=1"></iframe>
+    <iframe id="resumeFrame" title="Sai Kumar Devuni resume" src="assets/Sai-Kumar-Devuni-Resume.pdf#page=1&zoom=page-fit&toolbar=0&navpanes=0&scrollbar=1"></iframe>
   </div>
 
   <footer><div class="wrap">© <span id="year"></span> Sai Kumar Devuni. Built with HTML, CSS and JavaScript.
@@ -662,7 +662,14 @@
     document.getElementById('viewerClose').addEventListener('click', closeViewer);
     imageViewer.addEventListener('click', event => { if (event.target === imageViewer) closeViewer(); });
     const resumeViewer = document.getElementById('resumeViewer');
-    document.getElementById('openResume').addEventListener('click', () => { resumeViewer.classList.add('open'); document.body.style.overflow='hidden'; });
+    const resumeFrame = document.getElementById('resumeFrame');
+    const resumePdfUrl = 'assets/Sai-Kumar-Devuni-Resume.pdf#page=1&zoom=page-fit&toolbar=0&navpanes=0&scrollbar=1';
+    document.getElementById('openResume').addEventListener('click', () => {
+      // Reload the PDF at page 1 each time the viewer opens, rather than restoring its previous scroll position.
+      resumeFrame.src = resumePdfUrl;
+      resumeViewer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
     function closeResume() { resumeViewer.classList.remove('open'); document.body.style.overflow=''; }
     document.getElementById('resumeClose').addEventListener('click', closeResume);
     resumeViewer.addEventListener('click', event => { if (event.target === resumeViewer) closeResume(); });
